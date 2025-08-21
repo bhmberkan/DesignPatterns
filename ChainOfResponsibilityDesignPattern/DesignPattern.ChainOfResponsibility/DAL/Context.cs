@@ -11,6 +11,6 @@ namespace DesignPattern.ChainOfResponsibility.DAL
 
         public DbSet<CustomerProcess> customerProcesses { get; set; }
 
-        // master olarak oluşturmak  için bir yorum satırı ekliyorum. 
+      
     }
 }
