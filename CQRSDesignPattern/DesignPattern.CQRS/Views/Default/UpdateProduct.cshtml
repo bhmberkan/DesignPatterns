@@ -1,0 +1,78 @@
+﻿@model DesignPattern.CQRS.CQRSPattern.Results.GetProductUpdateQueryResult
+@{
+    Layout = null;
+}
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+
+    <form method="post">
+        <input type="hidden" class="form-control" asp-for="ProductID" />
+
+        <label>Ürün Adı</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <br />
+
+        <label>Ürün Stok Sayısı</label>
+        <input type="text" class="form-control" asp-for="Stock" />
+        <br />
+
+        <label>Ürün Fiyatı</label>
+        <input type="text" class="form-control" asp-for="Price" />
+        <br />
+
+        <label>Ürün Açıklaması</label>
+        <input type="text" class="form-control" asp-for="Description" />
+        <br />
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" asp-for="Status" id="statusCheck" />
+            <label class="form-check-label" for="statusCheck">
+                Ürün Durumu: <span id="statusText" class="badge">Pasif</span>
+            </label>
+        </div>
+        <br />
+
+        <button class="btn btn-success">Ürünü Güncelle</button>
+    </form>
+
+
+
+</div>
+
+<style>
+    .status-active {
+        background-color: #28a745; /* parlak yeşil */
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 0 8px rgba(40, 167, 69, 0.6);
+    }
+
+    .status-passive {
+        background-color: #adb5bd; /* soluk gri */
+        color: #f8f9fa;
+        font-weight: 400;
+        opacity: 0.7;
+    }
+</style>
+
+<script>
+    const checkbox = document.getElementById("statusCheck");
+    const statusText = document.getElementById("statusText");
+
+    function updateStatusText() {
+        if (checkbox.checked) {
+            statusText.textContent = "Aktif";
+            statusText.className = "badge status-active";
+        } else {
+            statusText.textContent = "Pasif";
+            statusText.className = "badge status-passive";
+        }
+    }
+
+    updateStatusText();
+    checkbox.addEventListener("change", updateStatusText);
+</script>
