@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TemplateMethodDesignPattern
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPattern.TemplateMethod", "TemplateMethodDesignPattern\DesignPattern.TemplateMethod\DesignPattern.TemplateMethod.csproj", "{D876A026-D207-45D6-999F-DE6E63C4745A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ObserverDesignPattern", "ObserverDesignPattern", "{8DBD9CDB-D2C8-4E60-929C-D9A15A58B9C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPattern.Observer", "ObserverDesignPattern\DesignPattern.Observer\DesignPattern.Observer.csproj", "{1ABCB459-7E8A-452C-965B-2F52BE95E4BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{D876A026-D207-45D6-999F-DE6E63C4745A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D876A026-D207-45D6-999F-DE6E63C4745A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D876A026-D207-45D6-999F-DE6E63C4745A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ABCB459-7E8A-452C-965B-2F52BE95E4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ABCB459-7E8A-452C-965B-2F52BE95E4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ABCB459-7E8A-452C-965B-2F52BE95E4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ABCB459-7E8A-452C-965B-2F52BE95E4BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +49,6 @@ Global
 		{6B21F353-0FA2-419E-907F-54B6E93AB2FA} = {A4813360-38A8-49A7-97C0-5C642FBBB5E3}
 		{9D32C5F6-F35E-417D-8803-994311D2F531} = {1D8FD139-755C-4F01-AB12-BBCA1C2C1330}
 		{D876A026-D207-45D6-999F-DE6E63C4745A} = {61BA32A3-375C-42F8-9F1E-E4936F7FD89B}
+		{1ABCB459-7E8A-452C-965B-2F52BE95E4BA} = {8DBD9CDB-D2C8-4E60-929C-D9A15A58B9C3}
 	EndGlobalSection
 EndGlobal
