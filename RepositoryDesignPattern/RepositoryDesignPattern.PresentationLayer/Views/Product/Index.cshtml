@@ -1,0 +1,36 @@
+﻿@model List<RepositoryDesignPattern.EntityLayer.Concerte.Product>
+@{
+    Layout = null;
+}
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ürün Adı</th>
+            <th>Stok</th>
+            <th>Fiyat</th>
+            <th>Kategori</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.ProductID</th>
+                <th>@item.ProductName</th>
+                <th>@item.ProductStock</th>
+                <th>@item.ProductPrice</th>
+                <th>@item.CategoryID</th>
+                <th><a href="/Product/DeleteProduct/@item.ProductID" class="btn btn-danger">Sil</a></th>
+                <th><a href="/Product/UpdateProduct/@item.ProductID" class="btn btn-success">Güncelle</a></th>
+
+            </tr>
+        }
+    </table>
+    <a href="/Product/AddProduct/" class="btn btn-primary">Yeni Ürün</a>
+</div>

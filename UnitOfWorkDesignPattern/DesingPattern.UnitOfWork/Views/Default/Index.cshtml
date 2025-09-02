@@ -6,22 +6,27 @@
 
 
 
+
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
-<form method="post">
-    <label>Gönderici ID</label>
-    <input type="text" class="form-control" asp-for="SenderID" />
-    <br/>
-
-    <label>Alıcı ID</label>
-    <input type="text" class="form-control" asp-for="ReceiverID" />
+<div class="container">
     <br />
 
+    <form method="post">
+        <label>Gönderici ID</label>
+        <input type="text" class="form-control" asp-for="SenderID" />
+        <br />
 
-    <label>Miktar</label>
-    <input type="text" class="form-control" asp-for="Amount" />
-    <br />
+        <label>Alıcı ID</label>
+        <input type="text" class="form-control" asp-for="ReceiverID" />
+        <br />
 
-    <button class="btn btn-primary">Gönder</button>
 
-</form>
+        <label>Miktar</label>
+        <input type="text" class="form-control" asp-for="Amount" />
+        <br />
+
+        <button class="btn btn-primary">Gönder</button>
+
+    </form>
+</div>
