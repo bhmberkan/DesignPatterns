@@ -1,0 +1,46 @@
+﻿@using DesignPattern.Mediator.MediatRPattern.Results
+@model List<GetAllProductQueryResult>
+@{
+    Layout = null;
+}
+
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br/>
+    <br/>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ürün Adı</th>
+        <th>Fiyatı</th>
+        <th>Stok Sayısı</th>
+        <th>Stok Türü</th>
+        <th>Kategorisi</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductPrice</td>
+            <td>@item.ProductStock</td>
+            <td>@item.ProductStockType</td>
+            <td>@item.ProductCategory</td>
+                <td><a href="/Product/DeleteProduct/@item.ProductID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Product/UpdateProduct/@item.ProductID" class="btn btn-outline-success">Güncelle</a></td>
+            <td><a href="/Product/GetProduct/@item.ProductID" class="btn btn-outline-warning">Detaylar</a></td>
+        
+        </tr>
+    }
+</table>
+
+<a href="/Product/AddProduct" class="btn btn-outline-info">Yeni Ürün Girişi</a>
+
+
+</div>
