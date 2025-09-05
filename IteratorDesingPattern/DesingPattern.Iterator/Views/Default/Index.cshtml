@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+    var model = ViewBag.v;
+    int count = 0;
+}
+
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br /> <br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ziyaret Nokatsı</th>
+        </tr>
+        @foreach (var item in model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item</td>
+            </tr>
+        }
+</table>
+</div>
