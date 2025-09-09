@@ -1,0 +1,30 @@
+﻿@model DesignPattern.Facade.DAL.Customer
+@{
+    ViewData["Title"] = "AddNewCustomer";
+    Layout = "~/Views/Shared/_FacadeLayout.cshtml";
+}
+
+<h1>Yeni Müşteri Girişi</h1>
+
+
+<form method="post">
+    
+    <label>Müşteri Adı</label>
+    <input type="text" class="form-control" asp-for="CustomerName"/>
+    <br />
+
+    <label>Müşteri Soyadı</label>
+    <input type="text" class="form-control" asp-for="CustomerSurname"/>
+    <br />
+
+    <label>Müşteri Adresi</label>
+    <input type="text" class="form-control" asp-for="CustomerAdress"/>
+    <br />
+
+    <label>Müşteri Şehri</label>
+    <input type="text" class="form-control" asp-for="CustomerCity"/>
+    <br />
+
+    <button class="btn btn-primary"> Müşteriyi Kaydet </button>
+
+</form>

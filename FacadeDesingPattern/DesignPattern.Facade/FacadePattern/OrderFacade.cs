@@ -11,10 +11,9 @@ namespace DesignPattern.Facade.FacadePattern
         AddOrder addOrder = new AddOrder();
         AddOrderDetail addOrderDetail = new AddOrderDetail();
 
-        public void CompleteOrder(int CustomerID, int ProductID, int OrderID, int ProductCount, decimal ProductPrice)
+        public void CompleteOrderDetail(int CustomerID, int ProductID, int OrderID, int ProductCount, decimal ProductPrice)
         {
-            order.CustomerID = CustomerID;
-            addOrder.AddNewOrder(order);
+          
 
 
             orderDetail.CustomerID = CustomerID;
@@ -27,6 +26,12 @@ namespace DesignPattern.Facade.FacadePattern
             addOrderDetail.AddNewOrderDetail(orderDetail);
 
             productStock.StockDecrease(ProductID, ProductCount);
+        }
+
+        public void CompleteOrder(int CustomerID)
+        {
+            order.CustomerID = CustomerID;
+            addOrder.AddNewOrder(order);
         }
     }
 }

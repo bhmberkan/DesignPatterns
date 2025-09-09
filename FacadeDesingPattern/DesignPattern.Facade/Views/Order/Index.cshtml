@@ -1,0 +1,33 @@
+﻿@model List<DesignPattern.Facade.DAL.OrderDetail>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_FacadeLayout.cshtml";
+}
+
+
+
+<h2>Sipariş Detay</h2>
+
+<table class="table table-bordered">
+    <tr>
+        
+        <th>Müşteri ID</th>
+        <th>Ürün ID</th>
+        <th>Sipariş ID</th>
+        <th>Ürün  Fiyat</th>
+        <th>Ürün Stok Sayısı</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CustomerID</td>
+            <td>@item.ProductID</td>
+            <td>@item.OrderID</td>
+            <td>@item.ProductPrice</td>
+            <td>@item.ProductCount</td>
+        </tr>
+    }
+</table>
+
+<a href="Order/OrderDetailStart/" class="btn btn-primary">Yeni Sipariş Girişi</a>
+
