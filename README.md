@@ -152,6 +152,15 @@ Gerçek kontrol adımlarını içerir. İsteği işler ve isterse zincire devam 
 Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
 
 ---
+
+##  🏗 Özet
+
+🍃İstekler zincir boyunca aktarılır.
+🍃Her işleyici isteği işleyebilir ya da bir sonrakine devredebilir.
+🍃Yeni kontroller kolayca eklenip çıkarılabilir.
+🍃Kod bakımı ve yeniden kullanılabilirliği artar.
+
+---
 <br/>
 <img width="1111" height="418" alt="image" src="https://github.com/user-attachments/assets/06c55aaf-fe70-4a61-b440-532629c680be" />
 <br/>
@@ -159,7 +168,117 @@ Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
 
 
 
-CQRS (Command Query Responsibilitiy Segregetion)
+## ⚡ CQRS (Command Query Responsibility Segregation)
+<br/>
+Diğer Adlarıyla: Command Query Separation
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+
+CQRS, veri okuma (Query) ve yazma (Command) işlemlerini ayrı modeller üzerinden ele alan bir tasarım desenidir.
+Bu desen ile:
+Veri okuma operasyonları hızlı ve optimize şekilde yapılabilir.
+Veri yazma işlemleri ise ayrı bir akışta yönetilir.
+
+👉 Temel amaç, okuma ve yazma operasyonlarının sorumluluklarını ayırarak daha ölçeklenebilir, anlaşılır ve yönetilebilir bir mimari kurmaktır.
+---
+<br/>
+
+---
+
+## ❓ Problem
+
+Geleneksel uygulamalarda aynı model hem okuma hem de yazma işlemlerini karşılar.
+Örneğin bir sipariş sistemi düşünelim:
+➵Kullanıcı sipariş oluşturur (yazma).
+➵Sipariş listesi görüntülenir (okuma).
+<b>Zamanla sistem büyüdükçe:<b/>
+➵Okuma işlemleri çok sık yapılır.
+➵Yazma işlemleri daha karmaşık hale gelir (transaction, business rules).
+➵Tek model üzerinde bu iki sorumluluğun birleşmesi, kodun karmaşık, zor test edilebilir ve bakımı maliyetli olmasına yol açar.
+
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm ➵
+
+CQRS, tek model yerine:
+<b>Command Model (Yazma):<b/>
+➵Veritabanına veri ekleme, güncelleme, silme gibi değişiklik yapan işlemler.
+➵“Komut” mantığıyla çalışır.
+➵Genelde DTO veya ayrı Command nesneleri ile temsil edilir.
+<b>Query Model (Okuma):<b/>
+➵Sadece veri okuma, raporlama, listeleme işlemleri.
+➵Performans için özelleştirilmiş olabilir (örneğin farklı DTO’lar, View modeller).
+
+
+<br/>
+##  Artılar
+👉 Bu ayrım sayesinde okuma ve yazma operasyonları bağımsız ölçeklenebilir ve farklı optimizasyonlara izin verir.
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Bir restoran mutfağı düşünün:
+
+a.Sipariş vermek (Command):
+Garsona sipariş söylersiniz. Garson siparişi mutfağa iletir. (Yazma işlemi).
+
+b.Siparişin durumunu öğrenmek (Query):
+Garsona “yemek hazır mı?” diye sorabilirsiniz. Garson mutfağa bakar ve size bilgi verir. (Okuma işlemi).
+
+
+<br/>
+👉 Aynı garson hem siparişi alır (Command) hem de bilgi verir (Query). Ama mutfak içindeki süreçler ayrı sorumluluklarla yönetilir.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+<b>Command:<b/>
+Veri üzerinde değişiklik yapan istekler (AddOrder, UpdateProduct, DeleteCustomer vb.).
+
+<b>Query:<b/>
+Veri okuma işlemleri (GetOrders, GetProductById, ListCustomers vb.).
+
+<b>Handler (İşleyici):<b/>
+Command veya Query nesnesini işleyen sınıf.
+
+<b/>Mediator (Opsiyonel):<b/>
+Command/Query isteklerini ilgili handler’a yönlendiren bileşen.
+
+<b>Data Source:<b/>
+Command ve Query için farklı olabilir (ör. Command için yazma odaklı veritabanı, Query için okuma replikası).
+
+---
+
+
+##  🏗 Özet
+
+
+🍃Command = Yazma, Query = Okuma.
+🍃Tek model yerine, iki ayrı model kullanılır.
+🍃Kod daha temiz, test edilebilir ve ölçeklenebilir olur.
+🍃Büyük sistemlerde (özellikle Microservice mimarisi ve Event Sourcing) çok tercih edilen bir yaklaşımdır.
+
+---
+<br/>
 <img width="1102" height="416" alt="image" src="https://github.com/user-attachments/assets/6a56bc48-39a4-4e56-a6e3-3b0b75ec12ad" />
 <br/>
 <img width="1110" height="414" alt="image" src="https://github.com/user-attachments/assets/26a44787-3ac3-4422-8cfc-98a0d0e4372b" />
