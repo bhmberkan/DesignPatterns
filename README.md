@@ -73,7 +73,7 @@ DesignPatterns/
 Diğer Adlarıyla: CoR, Chain of Command
 <br/>
 
----
+
 
 ---
 ## 🎯 Amaç (Intent)
