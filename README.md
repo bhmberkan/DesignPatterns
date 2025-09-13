@@ -155,10 +155,10 @@ Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
 
 ##  ✅ Özet
 
-🍃İstekler zincir boyunca aktarılır.
-🍃Her işleyici isteği işleyebilir ya da bir sonrakine devredebilir.
-🍃Yeni kontroller kolayca eklenip çıkarılabilir.
-🍃Kod bakımı ve yeniden kullanılabilirliği artar.
+🍃İstekler zincir boyunca aktarılır. <br/>
+🍃Her işleyici isteği işleyebilir ya da bir sonrakine devredebilir.<br/>
+🍃Yeni kontroller kolayca eklenip çıkarılabilir.<br/>
+🍃Kod bakımı ve yeniden kullanılabilirliği artar.<br/>
 
 ---
 <br/>
@@ -210,7 +210,7 @@ Geleneksel uygulamalarda aynı model hem okuma hem de yazma işlemlerini karşı
 
 
 ---
-## 💡 Çözüm ➵
+## 💡 Çözüm 
 
 CQRS, tek model yerine:
 <b>Command Model (Yazma):<b/>
@@ -272,10 +272,10 @@ Command ve Query için farklı olabilir (ör. Command için yazma odaklı verita
 ##  ✅ Özet
 
 
-🍃Command = Yazma, Query = Okuma.
-🍃Tek model yerine, iki ayrı model kullanılır.
-🍃Kod daha temiz, test edilebilir ve ölçeklenebilir olur.
-🍃Büyük sistemlerde (özellikle Microservice mimarisi ve Event Sourcing) çok tercih edilen bir yaklaşımdır.
+🍃Command = Yazma, Query = Okuma. <br/>
+🍃Tek model yerine, iki ayrı model kullanılır. <br/>
+🍃Kod daha temiz, test edilebilir ve ölçeklenebilir olur. <br/>
+🍃Büyük sistemlerde (özellikle Microservice mimarisi ve Event Sourcing) çok tercih edilen bir yaklaşımdır. <br/>
 
 ---
 <br/>
@@ -474,10 +474,10 @@ Template Method deseni öneriyor ki:
 
 Örneğin:
 
-➵OpenFile() → Her format için farklı (abstract)
-➵ExtractData() → Her format için farklı (abstract)
-➵AnalyzeData() → Ortak, üst sınıfta (default implementation)
-➵GenerateReport() → Ortak, üst sınıfta (default implementation)
+➵OpenFile() → Her format için farklı (abstract) <br/>
+➵ExtractData() → Her format için farklı (abstract) <br/>
+➵AnalyzeData() → Ortak, üst sınıfta (default implementation) <br/>
+➵GenerateReport() → Ortak, üst sınıfta (default implementation) <br/>
 
 📌 Böylece:
 
