@@ -416,7 +416,151 @@ ComponentA ---> Mediator <--- ComponentB
 <br/>
 
 
-Template Method Design Pattern
+## 🌸 Template Method Tasarım Deseni
+<br/>
+Türü: Behavioral (Davranışsal)
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Template Method, bir algoritmanın iskeletini (sırasını) üst sınıfta tanımlar;
+ancak algoritmanın belirli adımlarını alt sınıfların yeniden yazmasına (override) izin verir.
+
+👉 Böylece algoritmanın genel akışı sabit kalır, ama alt sınıflar detayları özelleştirebilir.
+
+---
+<br/>
+
+---
+
+## ❓ Problem
+
+
+Bir veri madenciliği uygulaması düşünelim:
+
+➵Kullanıcı, uygulamaya farklı formatlarda belgeler (DOC, CSV, PDF) yükleyebiliyor.
+➵Her format için farklı işleme kodu yazmanız gerekiyor.
+
+Sorunlar:
+
+1.Kod tekrarları oluşuyor: Açma, kapama, raporlama gibi adımlar hep aynı.
+2.İstemci kodu karmaşıklaşıyor: Her format için ayrı koşul (if-else) kullanmak gerekiyor.
+
+👉 Yani algoritma yapısı aynı, ama bazı adımlar formatlara göre değişiyor.
+
+
+
+
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+Template Method deseni öneriyor ki:
+
+1.Algoritmayı adımlara ayır.
+2.Bu adımları üst sınıfta tanımla.
+3.Algoritmanın akışını bir template method içinde sırayla çalıştır.
+4.Alt sınıflar, sadece kendilerine özel adımları override etsin.
+
+Örneğin:
+
+➵OpenFile() → Her format için farklı (abstract)
+➵ExtractData() → Her format için farklı (abstract)
+➵AnalyzeData() → Ortak, üst sınıfta (default implementation)
+➵GenerateReport() → Ortak, üst sınıfta (default implementation)
+
+📌 Böylece:
+
+➵Genel algoritma akışı korunur.
+➵Kod tekrarları ortadan kalkar.
+➵İstemci, sadece üst sınıf tipini kullanarak (polymorphism) tüm alt sınıflarla çalışabilir..
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Hava Trafik Kontrol Kulesi ✈️
+
+Toplu Konut İnşaatı 🏠
+
+->Her evin temel iskeleti aynıdır (temel atma, duvar örme, tesisat).
+->Ama bazı adımlar müşteriye göre değiştirilebilir (boya rengi, pencere tasarımı, iç mimari).
+
+👉 Yani şablon aynı kalır, ama detaylar özelleştirilebilir.
+
+
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+
+<b>Abstract Class (Soyut Sınıf)<b/>
+
+a.Template method’u tanımlar.
+a.Adım metotlarını (Step1, Step2 …) içerir.
+a.Bazıları abstract (zorunlu), bazıları varsayılan (opsiyonel) olabilir.
+
+<b>Concrete Class (Somut Sınıf)<b/>
+b.Abstract adımları override eder.
+b.İsterse varsayılanları da değiştirebilir.
+
+## 📌 Diyagram:
+```bash
+
+AbstractClass
+ ├── TemplateMethod()
+ ├── Step1() (abstract)
+ ├── Step2() (abstract)
+ └── Step3() (default)
+
+ConcreteClassA
+ └── Step1(), Step2() override
+
+ConcreteClassB
+ └── Step1(), Step2() override
+
+```
+
+
+
+---
+
+
+
+
+##  🎯 Avantajlar
+
+✔ Kod tekrarını azaltır. <br/>
+✔ Ortak algoritma iskeletini korur.<br/>
+✔ Yeni varyasyon eklemek kolaydır (sadece alt sınıf oluştur).<br/>
+✔ İstemci kodu basitleşir (polymorphism).<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘ Alt sınıflar arttıkça bakım yükü artabilir.<br/>
+✘ Algoritma iskeletini değiştirmek için base class’ı düzenlemek gerekir.<br/>
+
+---
+<br/>
 <img width="1086" height="413" alt="image" src="https://github.com/user-attachments/assets/dd2e2bb2-3050-4865-bc3e-e3ba83ec7079" />
 <br/>
 
