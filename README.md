@@ -72,6 +72,7 @@ DesignPatterns/
 <br/>
 Diğer Adlarıyla: CoR, Chain of Command
 <br/>
+
 ---
 
 ---
