@@ -153,7 +153,7 @@ Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
 
 ---
 
-##  🏗 Özet
+##  ✅ Özet
 
 🍃İstekler zincir boyunca aktarılır.
 🍃Her işleyici isteği işleyebilir ya da bir sonrakine devredebilir.
@@ -269,7 +269,7 @@ Command ve Query için farklı olabilir (ör. Command için yazma odaklı verita
 ---
 
 
-##  🏗 Özet
+##  ✅ Özet
 
 
 🍃Command = Yazma, Query = Okuma.
@@ -284,8 +284,134 @@ Command ve Query için farklı olabilir (ör. Command için yazma odaklı verita
 <img width="1110" height="414" alt="image" src="https://github.com/user-attachments/assets/26a44787-3ac3-4422-8cfc-98a0d0e4372b" />
 <br/>
 
+<br/>
 
-MediaTR-Mediator Design Pattern
+## ⚡Mediator (Arabulucu) Tasarım Deseni
+<br/>
+Diğer Adları: Intermediary, Controller
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Mediator, davranışsal (behavioral) bir tasarım desenidir.
+Amaç: Nesneler arasındaki karmaşık bağımlılıkları azaltmak, doğrudan iletişimi engelleyip, tüm etkileşimi yalnızca bir arabulucu (mediator) nesne üzerinden gerçekleştirmektir.
+
+---
+<br/>
+
+---
+
+## ❓ Problem
+
+
+Bir kullanıcı arayüzü (UI) düşünelim. Örneğin: müşteri profili oluşturma formu. Bu formda; textbox, checkbox, buton gibi farklı bileşenler vardır.
+
+➵"Köpeğim var" kutucuğunu işaretleyince köpek ismi için ek bir alan açılması gerekebilir.
+➵"Kaydet" butonuna tıklayınca, formdaki tüm alanların doğrulanması gerekebilir.
+
+Bu durumda:
+
+➵Bileşenler birbirine doğrudan bağımlı hale gelir.
+➵Checkbox sınıfı, textbox’ı bilmek zorunda kalır.
+➵Buton, bütün form elemanlarını kontrol etmek zorunda kalır.
+
+👉 Sonuç: Kod yeniden kullanılabilirliğini kaybeder. Bir bileşeni başka yerde tek başına kullanmak zorlaşır.
+
+
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm ➵
+
+Mediator deseni, doğrudan iletişimi ortadan kaldırır.
+
+➵Her bileşen, yalnızca Mediator ile konuşur.
+➵Mediator, hangi bileşenin nasıl tepki vereceğini belirler.
+➵Bileşenler arasında gevşek bağlılık (loose coupling) sağlanır.
+
+Örneğin:
+
+➵"Kaydet" butonu sadece “Mediator’a haber ver” görevini yapar.
+➵Mediator, formdaki diğer alanların doğrulanması gerektiğine karar verir ve onları tetikler.
+
+Bu sayede, bileşenlerin tek tek bağımlılığı ortadan kalkar.
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Hava Trafik Kontrol Kulesi ✈️
+
+a.Pilotlar doğrudan birbirleriyle konuşmaz.
+a.Her pilot sadece kontrol kulesi ile iletişim kurar.
+a.Kule, hangi uçağın önce ineceğine karar verir.
+
+👉 Eğer pilotlar doğrudan birbirleriyle konuşsaydı, havaalanında kaos olurdu.
+👉 Mediator, işte bu kule rolünü üstlenir.
+
+
+r.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+<b>1.Mediator Arayüzü<b/>
+
+➵Bileşenlerin haberleşme yöntemlerini tanımlar.
+➵Genellikle Notify veya Send gibi tek bir metot içerir.
+
+<b>2.Concrete Mediator (Somut Arabulucu)<b/>
+
+➵Bileşenler arasındaki iletişim kurallarını içerir.
+➵Tüm bileşenlere referans tutabilir.
+
+<b>3.Components (Bileşenler)<b/>
+
+➵İş mantığını barındırır.
+➵Diğer bileşenleri bilmez, sadece Mediator’a haber verir.
+
+```bash
+ComponentA ---> Mediator <--- ComponentB
+       |                          |
+       +----------> ComponentC <---+
+
+```
+
+
+---
+
+
+
+
+## 🎯 Avantajlar
+
+✔ Bileşenler arası gevşek bağlılık sağlar.
+✔ Yeniden kullanılabilirlik artar.
+✔ İletişim kuralları tek bir noktada (Mediator’da) toplanır.
+
+## ⚠️ Dezavantajlar
+
+✘ Mediator sınıfı çok fazla sorumluluk alabilir.
+✘ Karmaşık senaryolarda “God Object” haline gelebilir.
+
+
+---
+<br/>
 <img width="1081" height="401" alt="image" src="https://github.com/user-attachments/assets/efc56b0b-daf1-4927-9247-be2b48221a52" />
 <br/>
 
