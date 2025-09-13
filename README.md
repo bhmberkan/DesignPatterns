@@ -116,7 +116,7 @@ Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ay�
 <br/>
 
 ##  Artılar
-
+<br/>
 👉 Böylece kontroller bağımsız, modüler, yeniden kullanılabilir ve dinamik olarak zincirlenebilir hale gelir.
 ---
 
@@ -226,6 +226,8 @@ CQRS, tek model yerine:
 
 <br/>
 ##  Artılar
+<br/>
+
 👉 Bu ayrım sayesinde okuma ve yazma operasyonları bağımsız ölçeklenebilir ve farklı optimizasyonlara izin verir.
 ---
 
