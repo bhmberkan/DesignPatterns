@@ -713,7 +713,189 @@ ConcreteSubscriberB
 <br/>
 
 
-Repository  Design Pattern
+## 🌻 Repository Design Pattern
+<br/>
+Also known as: Data Access Pattern
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Repository Design Pattern, veri erişim mantığını iş mantığından ayırarak uygulamayı daha düzenli, test edilebilir ve sürdürülebilir hale getirmeyi amaçlar.
+
+Repository, uygulamanın veri katmanı ile domain/business katmanı arasında bir aracı (abstraction layer) görevi görür.
+
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Bir uygulamada iş mantığı sınıflarının doğrudan veritabanı erişim kodlarıyla dolu olduğunu düşünelim.
+
+Örneğin:
+
+a.Bir CustomerService sınıfı hem müşteri ile ilgili iş mantığını hem de SQL sorgularını içeriyor.
+
+Bu durumda:
+
+b.Kod okunabilirliği azalır.
+
+b.Veri kaynağı değişirse (SQL → MongoDB, API vb.) her yerde değişiklik yapmak gerekir.
+
+b.Test etmek zorlaşır çünkü gerçek veritabanına bağımlı hale gelir.
+
+
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+
+Repository Pattern, veri erişim işlemlerini kapsülleyen repository sınıfları oluşturmayı önerir.
+
+
+➵ Repository, belirli bir entity için (Customer, Product, Order vb.) CRUD işlemlerini (Create, Read, Update, Delete) yapar.
+
+
+➵ İş mantığı sınıfları repository üzerinden veriye erişir, SQL veya Entity Framework kodunu bilmez.
+
+
+➵ Bu sayede uygulamanın veri erişim katmanı soyutlanır.
+
+## Örneğin
+
+```bash
+public interface ICustomerRepository
+{
+    Customer GetById(int id);
+    IEnumerable<Customer> GetAll();
+    void Add(Customer customer);
+    void Update(Customer customer);
+    void Delete(int id);
+}
+
+```
+
+## İş Mantığı
+
+```bash
+
+public class CustomerService
+{
+    private readonly ICustomerRepository _repository;
+
+    public CustomerService(ICustomerRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public void RegisterCustomer(Customer customer)
+    {
+        // İş mantığı burada
+        _repository.Add(customer);
+    }
+}
+
+```
+
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Bir şirketin sekreterini düşün.
+
+a.Patron doğrudan herkesle iletişime geçmek yerine, sekretere söyler.
+
+a.Sekreter (repository) patron adına işleri organize eder (arama, mesaj, randevu).
+
+a.Patron işine (business logic) odaklanırken, sekreter de veri akışını yönetir.
+
+Aynı şekilde repository de iş katmanı ile veri kaynağı arasında bir aracı görevi görür.
+
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+
+
+
+➵
+Repository Pattern’in yapısı şu şekilde özetlenebilir:
+
+<b> 1.Entity (Domain Class):<b/>
+Veritabanındaki tabloları temsil eden sınıf (Customer, Product, Order).
+
+<b> 2.Repository Interface:<b/>
+CRUD operasyonlarını tanımlayan arayüz (ICustomerRepository).
+
+<b>  3.Concrete Repository:<b/>
+Veritabanı erişim detaylarını barındırır (EF Core, Dapper, ADO.NET).
+
+<b> 4.Service/Business Layer: <b/>
+Repository üzerinden veriye ulaşır. SQL bilmez.
+
+<b>4.Client:<b/>
+Servisleri çağıran katman (Controller, UI, API).
+
+
+```bash
+Client → Service Layer → Repository → Data Source (DB/API)
+
+
+```
+
+
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+✔Soyutlama sağlar: Veri erişim kodu iş mantığından ayrılır.<br/>
+
+✔Test edilebilirlik: Mock repository kullanarak unit test yazmak kolaylaşır.<br/>
+
+✔Esneklik: Veri kaynağı değiştiğinde (SQL’den NoSQL’e geçiş gibi) iş katmanı etkilenmez.<br/>
+
+✔Yeniden kullanılabilirlik: Aynı repository farklı servisler tarafından kullanılabilir.<br/>
+
+✔Bakım kolaylığı: DB erişim kodları tek bir yerde toplandığı için yönetimi kolaydır.<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘ Ek karmaşıklık: Küçük projelerde ekstra katman kod yükü yaratabilir.<br/>
+
+✘ Generic repository sorunları: Çok soyutlanmış generic repository’ler bazı özel sorguları yönetmekte yetersiz kalabilir.<br/>
+
+✘ Over-engineering riski: Basit CRUD işlemleri için fazla yapılandırma gerekebilir.<br/>
+
+✘ Performans sorunları: Yanlış tasarlanmış repository, gereksiz abstraction katmanından dolayı ek maliyet yaratabilir.<br/>
+
+---
+<br/>
 <img width="1107" height="410" alt="image" src="https://github.com/user-attachments/assets/7f332f05-0fe5-4f1e-9892-565947e1b90f" />
 <br/>
 
