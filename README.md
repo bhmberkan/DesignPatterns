@@ -73,13 +73,17 @@ DesignPatterns/
 Diğer Adlarıyla: CoR, Chain of Command
 <br/>
 ---
+
+---
 ## 🎯 Amaç (Intent)
 
 Chain of Responsibility, bir isteği (request) bir dizi işleyici (handler) boyunca iletmenize izin veren davranışsal (behavioral) tasarım desenidir.
 Her işleyici, kendisine gelen isteği ya işler ya da zincirdeki bir sonraki işleyiciye iletir.
 ---
 <br/>
+
 ---
+
 ## ❓ Problem
 
 Bir çevrim içi sipariş sistemi üzerinde çalıştığınızı düşünün:
@@ -91,10 +95,15 @@ Bir çevrim içi sipariş sistemi üzerinde çalıştığınızı düşünün:
 ➵Brute-force saldırılarını engellemek için aynı IP’den gelen tekrar eden hatalı girişler filtrelenmeli.
 ➵Performans için, önbellek kontrolü (cache) yapılmalı ve uygun yanıt varsa doğrudan dönülmeli.
 <br/>
+
 ##  Eksiklikler
 👉 Ancak her yeni kontrol eklendiğinde kod karmaşıklaştı, bakımın zorlaşması  ve tekrar kullanılabilirliği azaltır.
 ---
+
+
 <br/>
+
+
 ---
 ## 💡 Çözüm
 
@@ -107,8 +116,11 @@ Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ay�
 ##  Artılar
 👉 Böylece kontroller bağımsız, modüler, yeniden kullanılabilir ve dinamik olarak zincirlenebilir hale gelir.
 ---
+
 <br/>
+
 ---
+
 ##  🌍 Gerçek Dünya Örneği
 
 Bir donanım kurulumunda sorun yaşadınız ve teknik destek hattını aradınız:
@@ -121,7 +133,9 @@ Bir donanım kurulumunda sorun yaşadınız ve teknik destek hattını aradını
 👉 Burada çağrı, çözülene kadar bir zincir boyunca aktarılır.
 ---
 <br/>
+
 ---
+
 ##  🏗 Yapı (Structure)
 
 <b>Handler (İşleyici Arayüzü):<b/>
@@ -135,6 +149,7 @@ Gerçek kontrol adımlarını içerir. İsteği işler ve isterse zincire devam 
 
 <b>Client (İstemci):<b/>
 Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
+
 ---
 <br/>
 <img width="1111" height="418" alt="image" src="https://github.com/user-attachments/assets/06c55aaf-fe70-4a61-b440-532629c680be" />
