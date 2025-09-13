@@ -66,9 +66,82 @@ DesignPatterns/
 
 ## 📸 **Proje Görselleri** &  📄 **Pattern Örneklemleri**
 ---
-Chain Of Responsibility
+
+
+## 🔗 Chain of Responsibility
+<br/>
+Diğer Adlarıyla: CoR, Chain of Command
+<br/>
+---
+## 🎯 Amaç (Intent)
+
+Chain of Responsibility, bir isteği (request) bir dizi işleyici (handler) boyunca iletmenize izin veren davranışsal (behavioral) tasarım desenidir.
+Her işleyici, kendisine gelen isteği ya işler ya da zincirdeki bir sonraki işleyiciye iletir.
+---
+<br/>
+---
+## ❓ Problem
+
+Bir çevrim içi sipariş sistemi üzerinde çalıştığınızı düşünün:
+➵Yalnızca doğrulanmış kullanıcıların sipariş oluşturabilmesini istiyorsunuz.
+➵Yönetici yetkisine sahip kullanıcıların ise tüm siparişlere erişim hakkı olmalı.
+➵Bu kontrollerin sıralı bir şekilde yapılması gerektiğini fark ettiniz.
+➵İlk olarak, sistem kullanıcıyı doğrulamalı. Eğer kimlik doğrulama başarısız olursa diğer adımları yapmaya gerek yoktur.
+➵Daha sonra verilerin güvenliği için girdi temizliği (validation/sanitization) yapılmalı.
+➵Brute-force saldırılarını engellemek için aynı IP’den gelen tekrar eden hatalı girişler filtrelenmeli.
+➵Performans için, önbellek kontrolü (cache) yapılmalı ve uygun yanıt varsa doğrudan dönülmeli.
+<br/>
+##  Eksiklikler
+👉 Ancak her yeni kontrol eklendiğinde kod karmaşıklaştı, bakımın zorlaşması  ve tekrar kullanılabilirliği azaltır.
+---
+<br/>
+---
+## 💡 Çözüm
+
+Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ayırmayı önerir.
+➵Her kontrol, yalnızca tek bir sorumluluğa sahip ayrı bir sınıfta bulunur.
+➵Bu sınıflar ortak bir arayüzü uygular (örneğin Handle(request) metodu).
+➵İşleyiciler zincir şeklinde bağlanır.
+➵Her işleyici, isteği işler ve zincirdeki bir sonraki işleyiciye aktarıp aktarmamaya kendisi karar verir.
+<br/>
+##  Artılar
+👉 Böylece kontroller bağımsız, modüler, yeniden kullanılabilir ve dinamik olarak zincirlenebilir hale gelir.
+---
+<br/>
+---
+##  🌍 Gerçek Dünya Örneği
+
+Bir donanım kurulumunda sorun yaşadınız ve teknik destek hattını aradınız:
+
+1.Önce otomatik telesekreter yanıt verir (genel çözümler).
+2.Sonra müşteri temsilcisine bağlanırsınız (temel yardım).
+3.Sorun hâlâ çözülmezse çağrı mühendise iletilir.
+4.Sonunda doğru kişiye ulaşıp çözümü elde edersiniz.
+<br/>
+👉 Burada çağrı, çözülene kadar bir zincir boyunca aktarılır.
+---
+<br/>
+---
+##  🏗 Yapı (Structure)
+
+<b>Handler (İşleyici Arayüzü):<b/>
+Tüm işleyicilerin uygulaması gereken ortak arayüz. Genelde Handle(request) metodu içerir.
+
+<b>Base Handler (Temel İşleyici):<b/>
+Sonraki işleyiciye geçişi yönetmek için kullanılabilen ortak sınıf.
+
+<b>Concrete Handlers (Somut İşleyiciler):<b/>
+Gerçek kontrol adımlarını içerir. İsteği işler ve isterse zincire devam ettirir.
+
+<b>Client (İstemci):<b/>
+Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
+---
+<br/>
 <img width="1111" height="418" alt="image" src="https://github.com/user-attachments/assets/06c55aaf-fe70-4a61-b440-532629c680be" />
 <br/>
+
+
+
 
 CQRS (Command Query Responsibilitiy Segregetion)
 <img width="1102" height="416" alt="image" src="https://github.com/user-attachments/assets/6a56bc48-39a4-4e56-a6e3-3b0b75ec12ad" />
