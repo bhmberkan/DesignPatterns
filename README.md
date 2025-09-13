@@ -114,7 +114,9 @@ Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ay�
 ➵İşleyiciler zincir şeklinde bağlanır.
 ➵Her işleyici, isteği işler ve zincirdeki bir sonraki işleyiciye aktarıp aktarmamaya kendisi karar verir.
 <br/>
+
 ##  Artılar
+
 👉 Böylece kontroller bağımsız, modüler, yeniden kullanılabilir ve dinamik olarak zincirlenebilir hale gelir.
 ---
 
