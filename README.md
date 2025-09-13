@@ -362,7 +362,7 @@ a.Kule, hangi uçağın önce ineceğine karar verir.
 👉 Mediator, işte bu kule rolünü üstlenir.
 
 
-r.
+
 ---
 <br/>
 
