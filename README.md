@@ -565,7 +565,150 @@ ConcreteClassB
 <br/>
 
 
-Observer Design Pattern
+## 🌺 Observer Tasarım Deseni
+<br/>
+Türü: Behavioral (Davranışsal)
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Observer, bir nesnede meydana gelen olayları diğer nesnelere bildirmek için abonelik (subscription) mekanizması tanımlar. <br/>
+
+👉 Yani: Bir nesne (publisher) değişiklik yaptığında, ona abone olmuş tüm nesneler (subscribers) otomatik olarak haberdar edilir.
+
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Bir müşteri ve mağaza senaryosu düşünelim:
+
+➵Müşteri, yeni bir ürünün (ör. iPhone) mağazaya gelip gelmediğini öğrenmek istiyor.
+
+Çözümler:
+
+1.Müşteri her gün mağazaya gidip kontrol eder → Zaman kaybı ⏳ <br/>
+2.Mağaza tüm müşterilere e-posta atar → İlgilenmeyenler için spam 📩<br/>
+
+👉 Sorun:
+Ya müşteri boşuna zaman kaybeder, ya da mağaza gereksiz yere herkese bildirim gönderir.
+
+
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+➵ <b>Publisher (Yayıncı):<b/> Durumu değişen nesnedir.
+➵<b>Subscriber (Abone):<b/> O duruma ilgi duyan nesnelerdir.
+
+➵Observer deseni, publisher’a bir abonelik mekanizması ekler:
+➵Aboneler listeye eklenebilir veya listeden çıkabilir.
+
+Publisher’da bir olay olduğunda, listedeki tüm abonelere bildirim (update) gönderilir.
+
+👉 Böylece:
+
+➵İlgilenen aboneler bilgilendirilir.
+➵Publisher, somut subscriber sınıflarını bilmez. Sadece onların interface’ini kullanır.
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Dergi / Gazete Aboneliği 📰
+
+a.Bir dergiye abone olduğunuzda, her yeni sayı otomatik olarak size gönderilir. <br/>
+a.Dergiyi almak için mağazaya gitmenize gerek yoktur.<br/>
+a.İstediğinizde aboneliği iptal edebilirsiniz.<br/>
+
+👉 Publisher (dergi) → Subscriber (siz)
+
+
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+
+
+<b>Publisher (Yayıncı)<b/>
+
+➵Aboneleri listeler.
+➵Subscribe(), Unsubscribe(), Notify() metotlarını içerir.
+
+<b>Subscriber (Abone)<b/>
+
+➵Bildirim almak için Update() metodunu tanımlar.
+
+<b>Concrete Subscriber<b/>
+
+➵Bildirim geldiğinde belirli bir işlem yapar.
+
+<b>Client<b/>
+
+➵Publisher ve Subscriber nesnelerini oluşturur.
+➵Aboneleri yayıncıya kaydeder.
+
+## 📌 Diyagram:
+```bash
+
+Publisher
+ ├── Subscribe()
+ ├── Unsubscribe()
+ └── Notify()
+
+Subscriber
+ └── Update()
+
+ConcreteSubscriberA
+ └── Update() override
+
+ConcreteSubscriberB
+ └── Update() override
+
+```
+
+
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+✔ Publisher ve Subscriber gevşek bağlıdır (loose coupling). <br/>
+✔ Yeni subscriber eklemek kolaydır.<br/>
+✔ Tek publisher → çok subscriber ilişkisini etkin yönetir.<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘ Subscriber sayısı çok fazla olursa performans sorunu olabilir.<br/>
+✘ Publisher’ın bildirim sıklığı iyi yönetilmezse spam riski oluşur.<br/>
+
+---
+<br/>
 <img width="1101" height="406" alt="image" src="https://github.com/user-attachments/assets/4c404ad7-b2dd-4f1c-9071-2fa3217c5d8b" />
 <br/>
 
