@@ -330,7 +330,7 @@ Bu durumda:
 
 
 ---
-## 💡 Çözüm ➵
+## 💡 Çözüm 
 
 Mediator deseni, doğrudan iletişimi ortadan kaldırır.
 
@@ -400,14 +400,14 @@ ComponentA ---> Mediator <--- ComponentB
 
 ## 🎯 Avantajlar
 
-✔ Bileşenler arası gevşek bağlılık sağlar.
-✔ Yeniden kullanılabilirlik artar.
-✔ İletişim kuralları tek bir noktada (Mediator’da) toplanır.
+✔ Bileşenler arası gevşek bağlılık sağlar. <br/>
+✔ Yeniden kullanılabilirlik artar. <br/>
+✔ İletişim kuralları tek bir noktada (Mediator’da) toplanır. <br/>
 
 ## ⚠️ Dezavantajlar
 
-✘ Mediator sınıfı çok fazla sorumluluk alabilir.
-✘ Karmaşık senaryolarda “God Object” haline gelebilir.
+✘ Mediator sınıfı çok fazla sorumluluk alabilir. <br/>
+✘ Karmaşık senaryolarda “God Object” haline gelebilir. <br/>
 
 
 ---
