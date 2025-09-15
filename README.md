@@ -1041,20 +1041,709 @@ Client → Service Layer → Unit of Work → Repositories → Database
 <img width="1103" height="403" alt="image" src="https://github.com/user-attachments/assets/1ba1d1fe-44c7-4907-9f63-70f6316af3d8" />
 <br/>
 
-Composite Design Pattenr
+## 🌳 Composite Design Pattern
+<br/>
+Also known as: Object Tree
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Composite, nesneleri ağaç yapıları halinde düzenlemenize ve bu yapılarla tekil nesneymiş gibi çalışmanıza olanak tanıyan bir structural design pattern’dir.
+
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Bir sipariş sisteminiz olduğunu düşünün:
+
+a.Product → Tek bir ürün (ör. Laptop).
+
+a.Box → İçinde ürünler ve başka kutular olabilir.
+
+👉 Müşteri siparişi verdiğinde, fiyatı hesaplamak için:
+
+a.Kutuları açıp içindekileri dolaşmak
+
+a.İç içe geçmiş kutuların seviyelerini bilmek
+
+a.Farklı sınıflar (Product, Box) için ayrı mantık yazmak gerekir.
+
+Bu, kodun karmaşık ve bakımı zor hale gelmesine yol açar.
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+Composite, hem Product hem de Box için ortak bir arayüz (IComponent) tanımlar.
+
+➵Product (Leaf): Fiyatını direkt döndürür.
+
+➵Box (Composite): İçindekileri dolaşır, fiyatlarını toplar ve kendi ek maliyetini (ör. paketleme ücreti) ekleyebilir.
+
+👉 Böylece müşteri için fark etmez:
+Bir ürün de olsa, bir kutu da olsa aynı arayüz ile işlem yapılır.
+
+
+
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Askeri hiyerarşi:
+
+➵Ordu → Tümen → Tugay → Tabur → Takım → Asker
+
+➵Emir en üstten en alta kadar aynı şekilde aktarılır.
+Her seviye, altındaki tüm yapıyı yönetir.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+```bash
+Client → Component
+          ├── Leaf (Product)
+          └── Composite (Box)
+
+
+
+```
+➵<b>Component (IComponent): Ortak operasyonları tanımlar (GetPrice()).<b/>
+
+➵<b>Leaf (Product): Alt elemanı olmayan, temel iş yapan sınıf.<b/>
+
+➵<b>Composite (Box): Alt elemanlar (Product/Box) tutar, işleri onlara delege eder.<b/>
+
+➵<b>Client: Hem Product hem de Box ile aynı şekilde çalışır.<b/>
+
+
+
+
+
+
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+
+✔Basit kullanım: Client tarafı, tekil ürün mü yoksa kutu mu bilmek zorunda değil.<br/>
+
+✔Özyinelemeli yapı: Sınırsız iç içe kutu/alt eleman destekler.<br/>
+
+✔Açık-uzatılabilirlik (Open/Closed Principle): Yeni tür bileşenler eklenebilir.<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘ Aşırı soyutlama: Basit senaryolarda gereksiz karmaşıklık yaratabilir.<br/>
+
+✘ Tip güvenliği zayıflar: Farklı türde objeler aynı arayüz üzerinden yönetildiği için kontrol zor olabilir.<br/>
+
+✘ Performans maliyeti: Çok derin ağaç yapılarında özyinelemeli işlemler yavaş olabilir.<br/>
+
+---
+<br/>
 <img width="397" height="354" alt="image" src="https://github.com/user-attachments/assets/7ab61a80-3fa1-457e-b14e-e82b586be4e0" />
 <br/>
 
 
-Iterator Design Pattern
+## 🌀 Iterator Design Pattern
+<br/>
+
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Iterator, bir behavioral (davranışsal) tasarım deseni olup; bir koleksiyonun (list, stack, tree, graph vb.) elemanlarını, koleksiyonun iç yapısını açığa çıkarmadan sıralı bir şekilde gezmenizi sağlar.
+
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Koleksiyonlar yazılım geliştirmede en çok kullanılan veri yapılarındandır. Ancak:
+
+a.Her koleksiyon elemanlarını farklı şekilde tutar (liste, yığın, ağaç, grafik).
+
+a.Koleksiyonun elemanlarına erişmek için farklı yöntemler gerekir.
+
+a.Bazen farklı gezinme algoritmaları (ör. derinlik öncelikli, genişlik öncelikli, rastgele erişim) gerekebilir.
+
+Eğer tüm bu algoritmalar koleksiyonun içine eklenirse:
+
+a.Koleksiyonun asıl amacı olan veri saklama bulanıklaşır.
+
+a.Farklı koleksiyonlara erişmek için client kodu belirli koleksiyon sınıflarına bağımlı hale gelir.
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+Iterator deseni, gezinme (traversal) davranışını koleksiyonun içinden ayırarak ayrı bir Iterator nesnesine taşır.
+
+➵Iterator, gezinme algoritmasını kapsüller.
+
+➵Koleksiyonun mevcut durumunu (current position, kalan eleman sayısı) kendi içinde tutar.
+
+➵Bir koleksiyon için birden fazla iterator aynı anda bağımsız olarak çalışabilir.
+
+➵Tüm iterator’lar aynı arayüzü (interface) uygular → Böylece client kodu, koleksiyon tipinden bağımsız olur.
+
+👉 Yeni bir gezinme algoritması gerektiğinde sadece yeni bir Iterator sınıfı yazılır; koleksiyon veya client değiştirilmez.
+
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Roma’da gezilecek yerler koleksiyonunu düşün:
+
+b.Kendi başına gezinmek → kontrolsüz ve zaman kaybettirir.
+
+b.Telefon navigasyonu → ucuz ve pratik bir iterator.
+
+b.Yerel rehber → daha pahalı ama özel, kişiselleştirilmiş bir iterator.
+
+Her biri aynı koleksiyonu (Roma’daki tarihi yerler) farklı şekilde gezme algoritmasıyla temsil eder.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+1.Iterator (Arayüz) → Gezinti için gerekli metotları tanımlar (Next(), HasNext() vb.).
+
+2.ConcreteIterator → Belirli bir gezinme algoritmasını uygular, mevcut pozisyonu takip eder.
+
+3.Collection (Arayüz) → Uyumlu iterator döndüren metotları tanımlar.
+
+4.ConcreteCollection → Belirli bir ConcreteIterator döndürür.
+
+5.Client → Koleksiyon ve iterator ile sadece arayüzler üzerinden çalışır.
+
+🖥️ Pseudocode
+
+
+```bash
+// Iterator arayüzü
+public interface IIterator<T>
+{
+    bool HasNext();
+    T Next();
+}
+
+// Concrete Iterator
+public class ListIterator<T> : IIterator<T>
+{
+    private readonly List<T> _collection;
+    private int _position = 0;
+
+    public ListIterator(List<T> collection)
+    {
+        _collection = collection;
+    }
+
+    public bool HasNext() => _position < _collection.Count;
+
+    public T Next() => _collection[_position++];
+}
+
+// Collection arayüzü
+public interface ICollection<T>
+{
+    IIterator<T> CreateIterator();
+}
+
+// Concrete Collection
+public class ProductCollection : ICollection<string>
+{
+    private List<string> _items = new List<string>();
+
+    public void Add(string item) => _items.Add(item);
+
+    public IIterator<string> CreateIterator()
+    {
+        return new ListIterator<string>(_items);
+    }
+}
+
+// Client
+class Program
+{
+    static void Main()
+    {
+        var products = new ProductCollection();
+        products.Add("Laptop");
+        products.Add("Telefon");
+        products.Add("Tablet");
+
+        var iterator = products.CreateIterator();
+        while (iterator.HasNext())
+        {
+            Console.WriteLine(iterator.Next());
+        }
+    }
+}
+
+
+
+
+```
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+✔ Koleksiyonların iç yapısı gizlenir.<br/>
+✔ Farklı gezinme algoritmaları kolayca eklenebilir.<br/>
+✔ Client kodu, koleksiyon tipine bağımlı olmaz.<br/>
+✔ Aynı koleksiyon üzerinde birden fazla iterator kullanılabilir.<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘  Küçük projelerde fazladan karmaşıklık ekleyebilir.<br/>
+
+✘ Fazla sayıda iterator sınıfı, bakım maliyetini artırabilir.<br/>
+
+✘ Çok büyük koleksiyonlarda iteratorların durum takibi ek bellek maliyeti oluşturabilir.<br/>
+
+---
+<br/>
 <img width="1002" height="453" alt="image" src="https://github.com/user-attachments/assets/b0736139-f4da-4498-9c10-b5bc1790c3f4" />
 <br/>
 
-Facade Design Pattern
+## 🏛️ Facade Design Pattern
+<br/>
+
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Facade, bir structural (yapısal) tasarım deseni olup; karmaşık bir sistemin (library, framework, çoklu sınıflar) üzerinde, kullanımı kolaylaştıran basit bir arayüz sağlar.
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Bir uygulamanın karmaşık bir kütüphane veya framework ile çalışması gerektiğini düşünelim.
+
+a.Birçok nesnenin doğru sırada başlatılması,
+
+a.Bağımlılıkların takip edilmesi,
+
+a.Metotların uygun sırayla çağrılması gerekir.
+
+Bu durumda:
+
+b.İş mantığı, üçüncü parti sınıfların uygulama detaylarına sıkı sıkıya bağımlı hale gelir.
+
+b.Kod zor anlaşılır ve bakımı zor olur.
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+Facade deseni, bu karmaşık sistemi saran basit bir ara yüz sınıfı sağlar.
+
+Facade, alt sistemin karmaşıklığını gizler.
+
+Kullanıcıya yalnızca gerekli olan metotları sunar.
+
+Gereksiz detayları dışarı sızdırmaz.
+
+Örneğin:
+Bir uygulama profesyonel bir video dönüştürme kütüphanesi kullanıyor olabilir.
+Ama uygulamanın ihtiyacı yalnızca:
+
+```bash
+videoFacade.Encode("cat.mp4", "mp4");
+
+```
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Telefonla sipariş verdiğinizi düşünün:
+
+a.Operatör, sizin için Facade görevi görür.
+
+a.Sipariş sistemine, ödeme altyapısına ve kargoya erişim sağlar.
+
+a.Siz yalnızca bir numara arayıp sipariş verirsiniz → karmaşık süreçleri bilmenize gerek yoktur.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+<b>Facade → Alt sistemin karmaşıklığını saran basit arayüzü sağlar.<b/>
+
+<b>Additional Facade → Farklı özellikleri ayırmak için ek facade sınıfları olabilir.<b/>
+
+<b>Complex Subsystem → Alt sistemin karmaşık sınıflarıdır (birbirleriyle doğrudan çalışırlar).<b/>
+
+<b>Client → Alt sisteme doğrudan erişmek yerine Facade üzerinden erişir.<b/>
+
+🖥️ Pseudocode
+
+
+```bash
+// Karmaşık alt sistem
+public class VideoFile { }
+public class Codec { }
+public class MPEG4Codec : Codec { }
+public class OggCodec : Codec { }
+
+public class CodecFactory
+{
+    public Codec Extract(VideoFile file)
+    {
+        Console.WriteLine("Codec extracted.");
+        return new MPEG4Codec();
+    }
+}
+
+public class BitrateReader
+{
+    public static VideoFile Read(string filename, Codec codec)
+    {
+        Console.WriteLine("Bitrate reading...");
+        return new VideoFile();
+    }
+
+    public static void Convert(VideoFile buffer, Codec codec)
+    {
+        Console.WriteLine("Bitrate converting...");
+    }
+}
+
+// Facade
+public class VideoConversionFacade
+{
+    public void ConvertVideo(string filename, string format)
+    {
+        CodecFactory codecFactory = new CodecFactory();
+        VideoFile file = new VideoFile();
+        Codec codec = codecFactory.Extract(file);
+        VideoFile buffer = BitrateReader.Read(filename, codec);
+        BitrateReader.Convert(buffer, codec);
+
+        Console.WriteLine($"Video converted to {format} successfully!");
+    }
+}
+
+// Client
+class Program
+{
+    static void Main()
+    {
+        var facade = new VideoConversionFacade();
+        facade.ConvertVideo("cat-video.avi", "mp4");
+    }
+}
+
+
+```
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+✔ Karmaşık sistemi basit bir arayüzle gizler.<br/>
+✔ Bağımlılıkları azaltır, client sadece Facade’i bilir.<br/>
+✔ Kodun okunabilirliği ve bakımı kolaylaşır.<br/>
+✔ Alt sistemde değişiklik olsa bile Facade sabit kalabilir.<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘ Fazla özellik eklenirse, Facade karmaşıklaşabilir (yeni bir “mini framework” haline gelir).<br/>
+✘ Alt sistemdeki güçlü işlevsellikler saklanabilir → kullanıcı tüm özelliklere erişemez.<br/>
+✘ Ek soyutlama katmanı olduğundan, küçük projelerde gereksiz karmaşıklık yaratabilir.<br/>
+
+---
+<br/>
 <img width="1049" height="446" alt="image" src="https://github.com/user-attachments/assets/849b8699-6fdd-477c-a79c-3f33512c0e07" />
 <br/>
 
-Decorator Design Pattern
+## 🎭 Decorator Design Pattern
+<br/>
+
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Decorator, bir structural (yapısal) tasarım deseni olup, nesnelere yeni davranışlar eklemenin bir yolunu sunar.
+Bunu, nesneleri aynı arayüzü uygulayan özel “sarmalayıcı” (wrapper) nesneler içine alarak yapar.
+
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Bir bildirim (notification) kütüphanesi geliştirdiğinizi düşünün.
+Başta sadece e-posta bildirimi gönderen Notifier sınıfınız var.
+
+Daha sonra:
+
+a.Kullanıcılar SMS bildirimi istiyor.
+
+a.Bazıları Facebook bildirimi istiyor.
+
+a.Kurumsal kullanıcılar ise Slack bildirimi talep ediyor.
+
+👉 İlk çözüm: Notifier sınıfını miras alıp her biri için alt sınıflar (subclass) oluşturmak.
+Ama sorun şu:
+
+b.Birden fazla bildirim türü aynı anda kullanılamıyor.
+
+b.Tüm kombinasyonları oluşturmak için çok fazla alt sınıf gerekir (sınıf patlaması / combinatorial explosion).
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+Decorator deseni ile:
+
+a.Her bildirim türü için bir decorator sınıfı oluşturulur.
+
+a.Tüm sınıflar aynı INotifier arayüzünü uygular.
+
+a.Bir Notifier nesnesi, birden fazla decorator ile sarılabilir.
+
+🔑 Özet:
+
+b.EmailNotifier → Temel bildirim.
+
+b.SMSDecorator, SlackDecorator, FacebookDecorator → Ek özellikleri dinamik olarak ekler.
+
+b.Decorator’lar birbirine zincirleme eklenebilir (stack).
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Kıyafet giymek 🎽🧥🌧️:
+
+a.Önce tişört giyersiniz (temel nesne).
+
+a.Üşüyünce kazak giyersiniz (decorator).
+
+a.Daha çok üşüyünce mont eklersiniz (decorator).
+
+a.Yağmur yağarsa yağmurluk giyersiniz (decorator).
+
+👉 İhtiyaca göre katmanlı bir şekilde özellik eklenir, ve istenildiğinde kolayca çıkarılabilir.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+<b>1.Component → Ortak arayüz (INotifier).<b/>
+
+<b>2.Concrete Component → Temel sınıf (EmailNotifier).<b/>
+
+<b>3.Base Decorator → Diğer INotifier nesnelerini saran sınıf.<b/>
+
+<b>4.Concrete Decorators → Yeni davranışlar ekleyen sınıflar (SMSDecorator, SlackDecorator).<b/>
+
+<b>5.Client → Nesneleri doğrudan değil, decorator zinciri üzerinden kullanır.<b/>
+
+🖥️ Pseudocode
+
+
+```bash
+
+// Ortak arayüz
+public interface INotifier
+{
+    void Send(string message);
+}
+
+// Temel bileşen
+public class EmailNotifier : INotifier
+{
+    public void Send(string message)
+    {
+        Console.WriteLine($"Email sent: {message}");
+    }
+}
+
+// Base Decorator
+public abstract class NotifierDecorator : INotifier
+{
+    protected INotifier _wrappee;
+
+    public NotifierDecorator(INotifier notifier)
+    {
+        _wrappee = notifier;
+    }
+
+    public virtual void Send(string message)
+    {
+        _wrappee.Send(message);
+    }
+}
+
+// Concrete Decorators
+public class SMSDecorator : NotifierDecorator
+{
+    public SMSDecorator(INotifier notifier) : base(notifier) { }
+
+    public override void Send(string message)
+    {
+        base.Send(message);
+        Console.WriteLine($"SMS sent: {message}");
+    }
+}
+
+public class SlackDecorator : NotifierDecorator
+{
+    public SlackDecorator(INotifier notifier) : base(notifier) { }
+
+    public override void Send(string message)
+    {
+        base.Send(message);
+        Console.WriteLine($"Slack message sent: {message}");
+    }
+}
+
+// Client
+class Program
+{
+    static void Main()
+    {
+        INotifier notifier = new EmailNotifier();
+        notifier = new SMSDecorator(notifier);
+        notifier = new SlackDecorator(notifier);
+
+        notifier.Send("🚨 Fire in the server room!");
+    }
+}
+
+
+
+
+```
+
+📌 Çıktı:
+```bash
+
+Email sent: 🚨 Fire in the server room!
+SMS sent: 🚨 Fire in the server room!
+Slack message sent: 🚨 Fire in the server room!
+
+
+
+```
+
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+✔ Nesnelere çalışma zamanında (runtime) yeni davranış eklenebilir.<br/>
+
+✔ Alt sınıf patlaması (subclass explosion) engellenir.<br/>
+
+✔ İstediğiniz kadar dekoratörü birleştirip zincirleme kullanabilirsiniz.<br/>
+
+✔ Açık-Kapalı Prensibi (OCP) uygulanır → mevcut sınıflar değiştirilmez.<br/>
+
+
+##  ⚠️ Dezavantajlar
+
+✘ Çok fazla decorator zincirlenirse takip edilmesi zorlaşabilir.<br/>
+✘ Basit işler için gereksiz soyutlama katmanı ekleyebilir.<br/>
+✘ Debug yapmak zor olabilir (hangi decorator’un ne yaptığı karışabilir).<br/>
+
+---
+<br/>
 <img width="1111" height="78" alt="image" src="https://github.com/user-attachments/assets/0c00bb64-5400-4ae7-a4ed-f3266c097767" />
 <br/>
 
