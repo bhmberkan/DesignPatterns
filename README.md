@@ -904,7 +904,140 @@ Client → Service Layer → Repository → Data Source (DB/API)
 <br/>
 
 
-Unit Of Work Design Pattern
+## 🎣 Unit of Work Design Pattern
+<br/>
+Also known as: Transaction Script Manager
+<br/>
+
+
+---
+## 🎯 Amaç (Intent)
+
+Unit of Work, birden fazla repository ile yapılan işlemleri tek bir işlem (transaction) altında toplayarak:
+
+Tüm değişikliklerin birlikte başarıyla kaydedilmesini
+
+Veya tamamen geri alınmasını (rollback)
+
+sağlar.
+
+---
+<br/>
+
+---
+
+## ❌ Problem
+
+Bir e-ticaret uygulamasında:
+
+Sipariş verildiğinde Orders tablosuna kayıt yapılır.
+
+Aynı anda Stock tablosundan ürün düşülür.
+
+Ayrıca Payments tablosuna ödeme bilgisi kaydedilir.
+
+👉 Eğer bu işlemlerden biri başarısız olursa (ör. ödeme başarısız), diğer işlemler de geri alınmalıdır.
+Repository’ler bağımsız çalıştığında veri tutarsızlığı oluşur.
+<br/>
+
+
+---
+
+
+<br/>
+
+
+---
+## 💡 Çözüm 
+
+
+Unit of Work tüm repository işlemlerini tek bir transaction altında toplar.
+
+Begin Transaction → İşlemler başlar
+
+➵ Repository’ler aracılığıyla entity değişiklikleri yapılır
+
+➵ Commit() → Tüm değişiklikler veritabanına kaydedilir
+
+➵ Rollback() → Hata durumunda tüm değişiklikler geri alınır
+
+
+
+
+
+
+
+---
+
+<br/>
+
+---
+
+##  🌍 Gerçek Dünya Örneği
+
+Bir bankada para transferi:
+
+Ali’nin hesabından para çekilir.
+
+Veli’nin hesabına para yatırılır.
+
+Eğer yatırma işlemi başarısız olursa, çekilen para geri yatırılır.
+Bu işlemler tek bir transaction gibi çalışır.
+---
+<br/>
+
+---
+
+##  🏗 Yapı (Structure)
+
+
+
+➵<b>Entity (Domain Class): Veritabanı tablolarını temsil eder.<b/>
+
+➵<b>Repository: Tek tabloya yönelik CRUD işlemleri yapar.<b/>
+
+➵<b>Unit of Work: Tüm repository’leri ve transaction’ı yönetir.<b/>
+
+➵<b>Service Layer: İş mantığını yürütür.<b/>
+
+Client: API veya UI katmanı.
+
+```bash
+Client → Service Layer → Unit of Work → Repositories → Database
+
+
+
+```
+
+
+
+---
+
+
+
+
+
+##  🎯 Avantajlar
+
+
+✔Transaction yönetimi: Birden fazla işlem tek transaction altında yapılır.<br/>
+
+✔Veri tutarlılığı: Hata durumunda rollback yapılır.<br/>
+
+✔Merkezi kontrol: Tüm repository işlemleri tek noktadan yönetilir.<br/>
+
+✔Test kolaylığı: Mock Unit of Work ile test yazmak kolaydır.<br/>
+
+##  ⚠️ Dezavantajlar
+
+✘ Ek karmaşıklık: Küçük projelerde gereksiz olabilir.<br/>
+
+✘ Performans maliyeti: Büyük transaction’lar performansı düşürebilir.<br/>
+
+✘ Over-engineering riski: Basit CRUD projelerinde gereksiz soyutlama olur.<br/>
+
+---
+<br/>
 <img width="1103" height="403" alt="image" src="https://github.com/user-attachments/assets/1ba1d1fe-44c7-4907-9f63-70f6316af3d8" />
 <br/>
 
