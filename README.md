@@ -87,14 +87,14 @@ Her işleyici, kendisine gelen isteği ya işler ya da zincirdeki bir sonraki i�
 
 ## ❓ Problem
 
-Bir çevrim içi sipariş sistemi üzerinde çalıştığınızı düşünün:
-➵Yalnızca doğrulanmış kullanıcıların sipariş oluşturabilmesini istiyorsunuz.
-➵Yönetici yetkisine sahip kullanıcıların ise tüm siparişlere erişim hakkı olmalı.
-➵Bu kontrollerin sıralı bir şekilde yapılması gerektiğini fark ettiniz.
-➵İlk olarak, sistem kullanıcıyı doğrulamalı. Eğer kimlik doğrulama başarısız olursa diğer adımları yapmaya gerek yoktur.
-➵Daha sonra verilerin güvenliği için girdi temizliği (validation/sanitization) yapılmalı.
-➵Brute-force saldırılarını engellemek için aynı IP’den gelen tekrar eden hatalı girişler filtrelenmeli.
-➵Performans için, önbellek kontrolü (cache) yapılmalı ve uygun yanıt varsa doğrudan dönülmeli.
+Bir çevrim içi sipariş sistemi üzerinde çalıştığınızı düşünün:<br/>
+➵Yalnızca doğrulanmış kullanıcıların sipariş oluşturabilmesini istiyorsunuz.<br/>
+➵Yönetici yetkisine sahip kullanıcıların ise tüm siparişlere erişim hakkı olmalı.<br/>
+➵Bu kontrollerin sıralı bir şekilde yapılması gerektiğini fark ettiniz.<br/>
+➵İlk olarak, sistem kullanıcıyı doğrulamalı. Eğer kimlik doğrulama başarısız olursa diğer adımları yapmaya gerek yoktur.<br/>
+➵Daha sonra verilerin güvenliği için girdi temizliği (validation/sanitization) yapılmalı.<br/>
+➵Brute-force saldırılarını engellemek için aynı IP’den gelen tekrar eden hatalı girişler filtrelenmeli.<br/>
+➵Performans için, önbellek kontrolü (cache) yapılmalı ve uygun yanıt varsa doğrudan dönülmeli.<br/>
 <br/>
 
 ##  Eksiklikler
@@ -108,11 +108,11 @@ Bir çevrim içi sipariş sistemi üzerinde çalıştığınızı düşünün:
 ---
 ## 💡 Çözüm
 
-Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ayırmayı önerir.
-➵Her kontrol, yalnızca tek bir sorumluluğa sahip ayrı bir sınıfta bulunur.
-➵Bu sınıflar ortak bir arayüzü uygular (örneğin Handle(request) metodu).
-➵İşleyiciler zincir şeklinde bağlanır.
-➵Her işleyici, isteği işler ve zincirdeki bir sonraki işleyiciye aktarıp aktarmamaya kendisi karar verir.
+Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ayırmayı önerir.<br/>
+➵Her kontrol, yalnızca tek bir sorumluluğa sahip ayrı bir sınıfta bulunur.<br/>
+➵Bu sınıflar ortak bir arayüzü uygular (örneğin Handle(request) metodu).<br/>
+➵İşleyiciler zincir şeklinde bağlanır.<br/>
+➵Her işleyici, isteği işler ve zincirdeki bir sonraki işleyiciye aktarıp aktarmamaya kendisi karar verir.<br/>
 <br/>
 
 ##  Artılar
@@ -126,12 +126,12 @@ Chain of Responsibility, bu tür kontrolleri bağımsız nesnelere (handler) ay�
 
 ##  🌍 Gerçek Dünya Örneği
 
-Bir donanım kurulumunda sorun yaşadınız ve teknik destek hattını aradınız:
+Bir donanım kurulumunda sorun yaşadınız ve teknik destek hattını aradınız:<br/>
 
-1.Önce otomatik telesekreter yanıt verir (genel çözümler).
-2.Sonra müşteri temsilcisine bağlanırsınız (temel yardım).
-3.Sorun hâlâ çözülmezse çağrı mühendise iletilir.
-4.Sonunda doğru kişiye ulaşıp çözümü elde edersiniz.
+1.Önce otomatik telesekreter yanıt verir (genel çözümler).<br/>
+2.Sonra müşteri temsilcisine bağlanırsınız (temel yardım).<br/>
+3.Sorun hâlâ çözülmezse çağrı mühendise iletilir.<br/>
+4.Sonunda doğru kişiye ulaşıp çözümü elde edersiniz.<br/>
 <br/>
 👉 Burada çağrı, çözülene kadar bir zincir boyunca aktarılır.
 ---
@@ -166,6 +166,13 @@ Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
 <br/>
 <img width="1111" height="418" alt="image" src="https://github.com/user-attachments/assets/06c55aaf-fe70-4a61-b440-532629c680be" />
 <br/>
+<img width="1027" height="250" alt="image" src="https://github.com/user-attachments/assets/2a588f42-7f29-44d2-8b8f-ff3f313b9a38" />
+<br/>
+<img width="864" height="144" alt="image" src="https://github.com/user-attachments/assets/bee207c0-ddf4-40bb-9c67-306e43ecb587" />
+<br/>
+<img width="1027" height="239" alt="image" src="https://github.com/user-attachments/assets/0a30d138-b0dc-4d07-827b-7b71af866f61" />
+<br/>
+<img width="1070" height="179" alt="image" src="https://github.com/user-attachments/assets/353da8ce-c319-45d2-b17d-265c6c3d7143" />
 
 
 
@@ -180,10 +187,10 @@ Diğer Adlarıyla: Command Query Separation
 ## 🎯 Amaç (Intent)
 
 
-CQRS, veri okuma (Query) ve yazma (Command) işlemlerini ayrı modeller üzerinden ele alan bir tasarım desenidir.
+CQRS, veri okuma (Query) ve yazma (Command) işlemlerini ayrı modeller üzerinden ele alan bir tasarım desenidir.<br/>
 Bu desen ile:
-Veri okuma operasyonları hızlı ve optimize şekilde yapılabilir.
-Veri yazma işlemleri ise ayrı bir akışta yönetilir.
+Veri okuma operasyonları hızlı ve optimize şekilde yapılabilir.<br/>
+Veri yazma işlemleri ise ayrı bir akışta yönetilir.<br/>
 
 👉 Temel amaç, okuma ve yazma operasyonlarının sorumluluklarını ayırarak daha ölçeklenebilir, anlaşılır ve yönetilebilir bir mimari kurmaktır.
 ---
@@ -193,14 +200,14 @@ Veri yazma işlemleri ise ayrı bir akışta yönetilir.
 
 ## ❓ Problem
 
-Geleneksel uygulamalarda aynı model hem okuma hem de yazma işlemlerini karşılar.
-Örneğin bir sipariş sistemi düşünelim:
-➵Kullanıcı sipariş oluşturur (yazma).
-➵Sipariş listesi görüntülenir (okuma).
+Geleneksel uygulamalarda aynı model hem okuma hem de yazma işlemlerini karşılar.<br/>
+Örneğin bir sipariş sistemi düşünelim:<br/>
+➵Kullanıcı sipariş oluşturur (yazma).<br/>
+➵Sipariş listesi görüntülenir (okuma).<br/>
 <b>Zamanla sistem büyüdükçe:<b/>
-➵Okuma işlemleri çok sık yapılır.
-➵Yazma işlemleri daha karmaşık hale gelir (transaction, business rules).
-➵Tek model üzerinde bu iki sorumluluğun birleşmesi, kodun karmaşık, zor test edilebilir ve bakımı maliyetli olmasına yol açar.
+➵Okuma işlemleri çok sık yapılır.<br/>
+➵Yazma işlemleri daha karmaşık hale gelir (transaction, business rules).<br/>
+➵Tek model üzerinde bu iki sorumluluğun birleşmesi, kodun karmaşık, zor test edilebilir ve bakımı maliyetli olmasına yol açar.<br/>
 
 <br/>
 
@@ -216,12 +223,12 @@ Geleneksel uygulamalarda aynı model hem okuma hem de yazma işlemlerini karşı
 
 CQRS, tek model yerine:
 <b>Command Model (Yazma):<b/>
-➵Veritabanına veri ekleme, güncelleme, silme gibi değişiklik yapan işlemler.
-➵“Komut” mantığıyla çalışır.
-➵Genelde DTO veya ayrı Command nesneleri ile temsil edilir.
+➵Veritabanına veri ekleme, güncelleme, silme gibi değişiklik yapan işlemler.<br/>
+➵“Komut” mantığıyla çalışır.<br/>
+➵Genelde DTO veya ayrı Command nesneleri ile temsil edilir.<br/>
 <b>Query Model (Okuma):<b/>
-➵Sadece veri okuma, raporlama, listeleme işlemleri.
-➵Performans için özelleştirilmiş olabilir (örneğin farklı DTO’lar, View modeller).
+➵Sadece veri okuma, raporlama, listeleme işlemleri.<br/>
+➵Performans için özelleştirilmiş olabilir (örneğin farklı DTO’lar, View modeller).<br/>
 
 
 <br/>
@@ -287,6 +294,10 @@ Command ve Query için farklı olabilir (ör. Command için yazma odaklı verita
 <br/>
 <img width="1110" height="414" alt="image" src="https://github.com/user-attachments/assets/26a44787-3ac3-4422-8cfc-98a0d0e4372b" />
 <br/>
+<img width="998" height="183" alt="image" src="https://github.com/user-attachments/assets/ca0ad2f2-355a-4b60-95dd-d03fb745b56b" />
+<br/>
+<img width="1004" height="390" alt="image" src="https://github.com/user-attachments/assets/f24b679d-fe82-4258-bc6c-0d730bfa9e5c" />
+<br/>
 
 <br/>
 
@@ -299,7 +310,7 @@ Diğer Adları: Intermediary, Controller
 ---
 ## 🎯 Amaç (Intent)
 
-Mediator, davranışsal (behavioral) bir tasarım desenidir.
+Mediator, davranışsal (behavioral) bir tasarım desenidir.<br/>
 Amaç: Nesneler arasındaki karmaşık bağımlılıkları azaltmak, doğrudan iletişimi engelleyip, tüm etkileşimi yalnızca bir arabulucu (mediator) nesne üzerinden gerçekleştirmektir.
 
 ---
@@ -310,18 +321,18 @@ Amaç: Nesneler arasındaki karmaşık bağımlılıkları azaltmak, doğrudan i
 ## ❓ Problem
 
 
-Bir kullanıcı arayüzü (UI) düşünelim. Örneğin: müşteri profili oluşturma formu. Bu formda; textbox, checkbox, buton gibi farklı bileşenler vardır.
+Bir kullanıcı arayüzü (UI) düşünelim. Örneğin: müşteri profili oluşturma formu. Bu formda; textbox, checkbox, buton gibi farklı bileşenler vardır.<br/>
 
-➵"Köpeğim var" kutucuğunu işaretleyince köpek ismi için ek bir alan açılması gerekebilir.
-➵"Kaydet" butonuna tıklayınca, formdaki tüm alanların doğrulanması gerekebilir.
+➵"Köpeğim var" kutucuğunu işaretleyince köpek ismi için ek bir alan açılması gerekebilir.<br/>
+➵"Kaydet" butonuna tıklayınca, formdaki tüm alanların doğrulanması gerekebilir.<br/>
 
 Bu durumda:
 
-➵Bileşenler birbirine doğrudan bağımlı hale gelir.
-➵Checkbox sınıfı, textbox’ı bilmek zorunda kalır.
-➵Buton, bütün form elemanlarını kontrol etmek zorunda kalır.
+➵Bileşenler birbirine doğrudan bağımlı hale gelir.<br/>
+➵Checkbox sınıfı, textbox’ı bilmek zorunda kalır.<br/>
+➵Buton, bütün form elemanlarını kontrol etmek zorunda kalır.<br/>
 
-👉 Sonuç: Kod yeniden kullanılabilirliğini kaybeder. Bir bileşeni başka yerde tek başına kullanmak zorlaşır.
+👉 Sonuç: Kod yeniden kullanılabilirliğini kaybeder. Bir bileşeni başka yerde tek başına kullanmak zorlaşır.<br/>
 
 
 <br/>
@@ -336,18 +347,18 @@ Bu durumda:
 ---
 ## 💡 Çözüm 
 
-Mediator deseni, doğrudan iletişimi ortadan kaldırır.
+Mediator deseni, doğrudan iletişimi ortadan kaldırır.<br/>
 
-➵Her bileşen, yalnızca Mediator ile konuşur.
-➵Mediator, hangi bileşenin nasıl tepki vereceğini belirler.
-➵Bileşenler arasında gevşek bağlılık (loose coupling) sağlanır.
+➵Her bileşen, yalnızca Mediator ile konuşur.<br/>
+➵Mediator, hangi bileşenin nasıl tepki vereceğini belirler.<br/>
+➵Bileşenler arasında gevşek bağlılık (loose coupling) sağlanır.<br/>
 
-Örneğin:
+Örneğin:<br/>
 
-➵"Kaydet" butonu sadece “Mediator’a haber ver” görevini yapar.
-➵Mediator, formdaki diğer alanların doğrulanması gerektiğine karar verir ve onları tetikler.
+➵"Kaydet" butonu sadece “Mediator’a haber ver” görevini yapar.<br/>
+➵Mediator, formdaki diğer alanların doğrulanması gerektiğine karar verir ve onları tetikler.<br/>
 
-Bu sayede, bileşenlerin tek tek bağımlılığı ortadan kalkar.
+Bu sayede, bileşenlerin tek tek bağımlılığı ortadan kalkar.<br/>
 ---
 
 <br/>
@@ -356,14 +367,14 @@ Bu sayede, bileşenlerin tek tek bağımlılığı ortadan kalkar.
 
 ##  🌍 Gerçek Dünya Örneği
 
-Hava Trafik Kontrol Kulesi ✈️
+Hava Trafik Kontrol Kulesi ✈️<br/>
 
-a.Pilotlar doğrudan birbirleriyle konuşmaz.
-a.Her pilot sadece kontrol kulesi ile iletişim kurar.
-a.Kule, hangi uçağın önce ineceğine karar verir.
+a.Pilotlar doğrudan birbirleriyle konuşmaz.<br/>
+a.Her pilot sadece kontrol kulesi ile iletişim kurar.<br/>
+a.Kule, hangi uçağın önce ineceğine karar verir.<br/>
 
-👉 Eğer pilotlar doğrudan birbirleriyle konuşsaydı, havaalanında kaos olurdu.
-👉 Mediator, işte bu kule rolünü üstlenir.
+👉 Eğer pilotlar doğrudan birbirleriyle konuşsaydı, havaalanında kaos olurdu.<br/>
+👉 Mediator, işte bu kule rolünü üstlenir.<br/>
 
 
 
@@ -376,17 +387,17 @@ a.Kule, hangi uçağın önce ineceğine karar verir.
 
 <b>1.Mediator Arayüzü<b/>
 
-➵Bileşenlerin haberleşme yöntemlerini tanımlar.
+➵Bileşenlerin haberleşme yöntemlerini tanımlar.<br/>
 ➵Genellikle Notify veya Send gibi tek bir metot içerir.
 
 <b>2.Concrete Mediator (Somut Arabulucu)<b/>
 
-➵Bileşenler arasındaki iletişim kurallarını içerir.
+➵Bileşenler arasındaki iletişim kurallarını içerir.<br/>
 ➵Tüm bileşenlere referans tutabilir.
 
 <b>3.Components (Bileşenler)<b/>
 
-➵İş mantığını barındırır.
+➵İş mantığını barındırır.<br/>
 ➵Diğer bileşenleri bilmez, sadece Mediator’a haber verir.
 
 ```bash
@@ -418,6 +429,8 @@ ComponentA ---> Mediator <--- ComponentB
 <br/>
 <img width="1081" height="401" alt="image" src="https://github.com/user-attachments/assets/efc56b0b-daf1-4927-9247-be2b48221a52" />
 <br/>
+<img width="997" height="411" alt="image" src="https://github.com/user-attachments/assets/cae6ead1-83f7-4d89-a110-dc45165aabe9" />
+<br/>
 
 
 ## 🌸 Template Method Tasarım Deseni
@@ -429,10 +442,10 @@ Türü: Behavioral (Davranışsal)
 ---
 ## 🎯 Amaç (Intent)
 
-Template Method, bir algoritmanın iskeletini (sırasını) üst sınıfta tanımlar;
-ancak algoritmanın belirli adımlarını alt sınıfların yeniden yazmasına (override) izin verir.
+Template Method, bir algoritmanın iskeletini (sırasını) üst sınıfta tanımlar;<br/>
+ancak algoritmanın belirli adımlarını alt sınıfların yeniden yazmasına (override) izin verir.<br/>
 
-👉 Böylece algoritmanın genel akışı sabit kalır, ama alt sınıflar detayları özelleştirebilir.
+👉 Böylece algoritmanın genel akışı sabit kalır, ama alt sınıflar detayları özelleştirebilir.<br/>
 
 ---
 <br/>
@@ -442,17 +455,17 @@ ancak algoritmanın belirli adımlarını alt sınıfların yeniden yazmasına (
 ## ❓ Problem
 
 
-Bir veri madenciliği uygulaması düşünelim:
+Bir veri madenciliği uygulaması düşünelim:<br/>
 
-➵Kullanıcı, uygulamaya farklı formatlarda belgeler (DOC, CSV, PDF) yükleyebiliyor.
-➵Her format için farklı işleme kodu yazmanız gerekiyor.
+➵Kullanıcı, uygulamaya farklı formatlarda belgeler (DOC, CSV, PDF) yükleyebiliyor.<br/>
+➵Her format için farklı işleme kodu yazmanız gerekiyor.<br/>
 
-Sorunlar:
+Sorunlar:<br/>
 
-1.Kod tekrarları oluşuyor: Açma, kapama, raporlama gibi adımlar hep aynı.
-2.İstemci kodu karmaşıklaşıyor: Her format için ayrı koşul (if-else) kullanmak gerekiyor.
+1.Kod tekrarları oluşuyor: Açma, kapama, raporlama gibi adımlar hep aynı.<br/>
+2.İstemci kodu karmaşıklaşıyor: Her format için ayrı koşul (if-else) kullanmak gerekiyor.<br/>
 
-👉 Yani algoritma yapısı aynı, ama bazı adımlar formatlara göre değişiyor.
+👉 Yani algoritma yapısı aynı, ama bazı adımlar formatlara göre değişiyor.<br/>
 
 
 
@@ -469,12 +482,12 @@ Sorunlar:
 ---
 ## 💡 Çözüm 
 
-Template Method deseni öneriyor ki:
+Template Method deseni öneriyor ki:<br/>
 
-1.Algoritmayı adımlara ayır.
-2.Bu adımları üst sınıfta tanımla.
-3.Algoritmanın akışını bir template method içinde sırayla çalıştır.
-4.Alt sınıflar, sadece kendilerine özel adımları override etsin.
+1.Algoritmayı adımlara ayır.<br/>
+2.Bu adımları üst sınıfta tanımla.<br/>
+3.Algoritmanın akışını bir template method içinde sırayla çalıştır.<br/>
+4.Alt sınıflar, sadece kendilerine özel adımları override etsin.<br/>
 
 Örneğin:
 
@@ -485,9 +498,9 @@ Template Method deseni öneriyor ki:
 
 📌 Böylece:
 
-➵Genel algoritma akışı korunur.
-➵Kod tekrarları ortadan kalkar.
-➵İstemci, sadece üst sınıf tipini kullanarak (polymorphism) tüm alt sınıflarla çalışabilir..
+➵Genel algoritma akışı korunur.<br/>
+➵Kod tekrarları ortadan kalkar.<br/>
+➵İstemci, sadece üst sınıf tipini kullanarak (polymorphism) tüm alt sınıflarla çalışabilir..<br/>
 
 
 ---
@@ -498,14 +511,14 @@ Template Method deseni öneriyor ki:
 
 ##  🌍 Gerçek Dünya Örneği
 
-Hava Trafik Kontrol Kulesi ✈️
 
-Toplu Konut İnşaatı 🏠
 
-->Her evin temel iskeleti aynıdır (temel atma, duvar örme, tesisat).
-->Ama bazı adımlar müşteriye göre değiştirilebilir (boya rengi, pencere tasarımı, iç mimari).
+Toplu Konut İnşaatı 🏠<br/>
 
-👉 Yani şablon aynı kalır, ama detaylar özelleştirilebilir.
+->Her evin temel iskeleti aynıdır (temel atma, duvar örme, tesisat).<br/>
+->Ama bazı adımlar müşteriye göre değiştirilebilir (boya rengi, pencere tasarımı, iç mimari).<br/>
+
+👉 Yani şablon aynı kalır, ama detaylar özelleştirilebilir.<br/>
 
 
 ---
@@ -519,13 +532,13 @@ Toplu Konut İnşaatı 🏠
 
 <b>Abstract Class (Soyut Sınıf)<b/>
 
-a.Template method’u tanımlar.
-a.Adım metotlarını (Step1, Step2 …) içerir.
-a.Bazıları abstract (zorunlu), bazıları varsayılan (opsiyonel) olabilir.
+a.Template method’u tanımlar.<br/>
+a.Adım metotlarını (Step1, Step2 …) içerir.<br/>
+a.Bazıları abstract (zorunlu), bazıları varsayılan (opsiyonel) olabilir.<br/>
 
 <b>Concrete Class (Somut Sınıf)<b/>
-b.Abstract adımları override eder.
-b.İsterse varsayılanları da değiştirebilir.
+b.Abstract adımları override eder.<br/>
+b.İsterse varsayılanları da değiştirebilir.<br/>
 
 ## 📌 Diyagram:
 ```bash
@@ -567,7 +580,8 @@ ConcreteClassB
 <br/>
 <img width="1086" height="413" alt="image" src="https://github.com/user-attachments/assets/dd2e2bb2-3050-4865-bc3e-e3ba83ec7079" />
 <br/>
-
+<img width="581" height="224" alt="image" src="https://github.com/user-attachments/assets/fe47b693-50d5-4d3e-8b74-4a584f3484a6" />
+<br/>
 
 ## 🌺 Observer Tasarım Deseni
 <br/>
@@ -589,9 +603,9 @@ Observer, bir nesnede meydana gelen olayları diğer nesnelere bildirmek için a
 
 ## ❌ Problem
 
-Bir müşteri ve mağaza senaryosu düşünelim:
+Bir müşteri ve mağaza senaryosu düşünelim:<br/>
 
-➵Müşteri, yeni bir ürünün (ör. iPhone) mağazaya gelip gelmediğini öğrenmek istiyor.
+➵Müşteri, yeni bir ürünün (ör. iPhone) mağazaya gelip gelmediğini öğrenmek istiyor.<br/>
 
 Çözümler:
 
@@ -617,15 +631,15 @@ Ya müşteri boşuna zaman kaybeder, ya da mağaza gereksiz yere herkese bildiri
 ➵ <b>Publisher (Yayıncı):<b/> Durumu değişen nesnedir.
 ➵<b>Subscriber (Abone):<b/> O duruma ilgi duyan nesnelerdir.
 
-➵Observer deseni, publisher’a bir abonelik mekanizması ekler:
-➵Aboneler listeye eklenebilir veya listeden çıkabilir.
+➵Observer deseni, publisher’a bir abonelik mekanizması ekler:<br/>
+➵Aboneler listeye eklenebilir veya listeden çıkabilir.<br/>
 
-Publisher’da bir olay olduğunda, listedeki tüm abonelere bildirim (update) gönderilir.
+Publisher’da bir olay olduğunda, listedeki tüm abonelere bildirim (update) gönderilir.<br/>
 
-👉 Böylece:
+👉 Böylece:<br/>
 
-➵İlgilenen aboneler bilgilendirilir.
-➵Publisher, somut subscriber sınıflarını bilmez. Sadece onların interface’ini kullanır.
+➵İlgilenen aboneler bilgilendirilir.<br/>
+➵Publisher, somut subscriber sınıflarını bilmez. Sadece onların interface’ini kullanır.<br/>
 
 
 ---
@@ -657,7 +671,7 @@ a.İstediğinizde aboneliği iptal edebilirsiniz.<br/>
 
 <b>Publisher (Yayıncı)<b/>
 
-➵Aboneleri listeler.
+➵Aboneleri listeler.<br/>
 ➵Subscribe(), Unsubscribe(), Notify() metotlarını içerir.
 
 <b>Subscriber (Abone)<b/>
@@ -670,7 +684,7 @@ a.İstediğinizde aboneliği iptal edebilirsiniz.<br/>
 
 <b>Client<b/>
 
-➵Publisher ve Subscriber nesnelerini oluşturur.
+➵Publisher ve Subscriber nesnelerini oluşturur.<br/>
 ➵Aboneleri yayıncıya kaydeder.
 
 ## 📌 Diyagram:
@@ -715,6 +729,11 @@ ConcreteSubscriberB
 <br/>
 <img width="1101" height="406" alt="image" src="https://github.com/user-attachments/assets/4c404ad7-b2dd-4f1c-9071-2fa3217c5d8b" />
 <br/>
+<img width="1019" height="436" alt="image" src="https://github.com/user-attachments/assets/e668145e-5c2a-49ac-b492-6748b0a9a5b2" />
+<br/>
+<img width="690" height="430" alt="image" src="https://github.com/user-attachments/assets/c3461662-6815-4da3-90b5-c7e61c6eeaa3" />
+<br/>
+
 
 
 ## 🌻 Repository Design Pattern
@@ -726,7 +745,7 @@ Also known as: Data Access Pattern
 ---
 ## 🎯 Amaç (Intent)
 
-Repository Design Pattern, veri erişim mantığını iş mantığından ayırarak uygulamayı daha düzenli, test edilebilir ve sürdürülebilir hale getirmeyi amaçlar.
+Repository Design Pattern, veri erişim mantığını iş mantığından ayırarak uygulamayı daha düzenli, test edilebilir ve sürdürülebilir hale getirmeyi amaçlar.<br/>
 
 Repository, uygulamanın veri katmanı ile domain/business katmanı arasında bir aracı (abstraction layer) görevi görür.
 
@@ -737,19 +756,19 @@ Repository, uygulamanın veri katmanı ile domain/business katmanı arasında bi
 
 ## ❌ Problem
 
-Bir uygulamada iş mantığı sınıflarının doğrudan veritabanı erişim kodlarıyla dolu olduğunu düşünelim.
+Bir uygulamada iş mantığı sınıflarının doğrudan veritabanı erişim kodlarıyla dolu olduğunu düşünelim.<br/>
 
-Örneğin:
+Örneğin:<br/>
 
-a.Bir CustomerService sınıfı hem müşteri ile ilgili iş mantığını hem de SQL sorgularını içeriyor.
+a.Bir CustomerService sınıfı hem müşteri ile ilgili iş mantığını hem de SQL sorgularını içeriyor.<br/>
 
 Bu durumda:
+<br/>
+b.Kod okunabilirliği azalır.<br/>
 
-b.Kod okunabilirliği azalır.
+b.Veri kaynağı değişirse (SQL → MongoDB, API vb.) her yerde değişiklik yapmak gerekir.<br/>
 
-b.Veri kaynağı değişirse (SQL → MongoDB, API vb.) her yerde değişiklik yapmak gerekir.
-
-b.Test etmek zorlaşır çünkü gerçek veritabanına bağımlı hale gelir.
+b.Test etmek zorlaşır çünkü gerçek veritabanına bağımlı hale gelir.<br/>
 
 
 <br/>
@@ -765,16 +784,16 @@ b.Test etmek zorlaşır çünkü gerçek veritabanına bağımlı hale gelir.
 ## 💡 Çözüm 
 
 
-Repository Pattern, veri erişim işlemlerini kapsülleyen repository sınıfları oluşturmayı önerir.
+Repository Pattern, veri erişim işlemlerini kapsülleyen repository sınıfları oluşturmayı önerir.<br/>
 
 
-➵ Repository, belirli bir entity için (Customer, Product, Order vb.) CRUD işlemlerini (Create, Read, Update, Delete) yapar.
+➵ Repository, belirli bir entity için (Customer, Product, Order vb.) CRUD işlemlerini (Create, Read, Update, Delete) yapar.<br/>
 
 
-➵ İş mantığı sınıfları repository üzerinden veriye erişir, SQL veya Entity Framework kodunu bilmez.
+➵ İş mantığı sınıfları repository üzerinden veriye erişir, SQL veya Entity Framework kodunu bilmez.<br/>
 
 
-➵ Bu sayede uygulamanın veri erişim katmanı soyutlanır.
+➵ Bu sayede uygulamanın veri erişim katmanı soyutlanır.<br/>
 
 ## Örneğin
 
@@ -822,15 +841,15 @@ public class CustomerService
 
 ##  🌍 Gerçek Dünya Örneği
 
-Bir şirketin sekreterini düşün.
+Bir şirketin sekreterini düşün.<br/>
 
-a.Patron doğrudan herkesle iletişime geçmek yerine, sekretere söyler.
+a.Patron doğrudan herkesle iletişime geçmek yerine, sekretere söyler.<br/>
 
-a.Sekreter (repository) patron adına işleri organize eder (arama, mesaj, randevu).
+a.Sekreter (repository) patron adına işleri organize eder (arama, mesaj, randevu).<br/>
 
-a.Patron işine (business logic) odaklanırken, sekreter de veri akışını yönetir.
+a.Patron işine (business logic) odaklanırken, sekreter de veri akışını yönetir.<br/>
 
-Aynı şekilde repository de iş katmanı ile veri kaynağı arasında bir aracı görevi görür.
+Aynı şekilde repository de iş katmanı ile veri kaynağı arasında bir aracı görevi görür.<br/>
 
 ---
 <br/>
@@ -902,6 +921,10 @@ Client → Service Layer → Repository → Data Source (DB/API)
 <br/>
 <img width="1107" height="410" alt="image" src="https://github.com/user-attachments/assets/7f332f05-0fe5-4f1e-9892-565947e1b90f" />
 <br/>
+<img width="1002" height="174" alt="image" src="https://github.com/user-attachments/assets/fefbeebc-7a3b-4043-a387-f6737bb69a49" />
+<br/>
+<img width="430" height="498" alt="image" src="https://github.com/user-attachments/assets/e10337ef-c503-44c0-bf3d-ac3452245793" />
+<br/>
 
 
 ## 🎣 Unit of Work Design Pattern
@@ -913,11 +936,11 @@ Also known as: Transaction Script Manager
 ---
 ## 🎯 Amaç (Intent)
 
-Unit of Work, birden fazla repository ile yapılan işlemleri tek bir işlem (transaction) altında toplayarak:
+Unit of Work, birden fazla repository ile yapılan işlemleri tek bir işlem (transaction) altında toplayarak:<br/>
 
-Tüm değişikliklerin birlikte başarıyla kaydedilmesini
+Tüm değişikliklerin birlikte başarıyla kaydedilmesini<br/>
 
-Veya tamamen geri alınmasını (rollback)
+Veya tamamen geri alınmasını (rollback)<br/>
 
 sağlar.
 
@@ -928,16 +951,16 @@ sağlar.
 
 ## ❌ Problem
 
-Bir e-ticaret uygulamasında:
+Bir e-ticaret uygulamasında:<br/>
 
-Sipariş verildiğinde Orders tablosuna kayıt yapılır.
+Sipariş verildiğinde Orders tablosuna kayıt yapılır.<br/>
 
-Aynı anda Stock tablosundan ürün düşülür.
+Aynı anda Stock tablosundan ürün düşülür.<br/>
 
-Ayrıca Payments tablosuna ödeme bilgisi kaydedilir.
+Ayrıca Payments tablosuna ödeme bilgisi kaydedilir.<br/>
 
-👉 Eğer bu işlemlerden biri başarısız olursa (ör. ödeme başarısız), diğer işlemler de geri alınmalıdır.
-Repository’ler bağımsız çalıştığında veri tutarsızlığı oluşur.
+👉 Eğer bu işlemlerden biri başarısız olursa (ör. ödeme başarısız), diğer işlemler de geri alınmalıdır.<br/>
+Repository’ler bağımsız çalıştığında veri tutarsızlığı oluşur.<br/>
 <br/>
 
 
@@ -951,15 +974,15 @@ Repository’ler bağımsız çalıştığında veri tutarsızlığı oluşur.
 ## 💡 Çözüm 
 
 
-Unit of Work tüm repository işlemlerini tek bir transaction altında toplar.
+Unit of Work tüm repository işlemlerini tek bir transaction altında toplar.<br/>
 
-Begin Transaction → İşlemler başlar
+Begin Transaction → İşlemler başlar<br/>
 
-➵ Repository’ler aracılığıyla entity değişiklikleri yapılır
+➵ Repository’ler aracılığıyla entity değişiklikleri yapılır<br/>
 
-➵ Commit() → Tüm değişiklikler veritabanına kaydedilir
+➵ Commit() → Tüm değişiklikler veritabanına kaydedilir<br/>
 
-➵ Rollback() → Hata durumunda tüm değişiklikler geri alınır
+➵ Rollback() → Hata durumunda tüm değişiklikler geri alınır<br/>
 
 
 
@@ -975,14 +998,14 @@ Begin Transaction → İşlemler başlar
 
 ##  🌍 Gerçek Dünya Örneği
 
-Bir bankada para transferi:
+Bir bankada para transferi:<br/>
 
-Ali’nin hesabından para çekilir.
+Ali’nin hesabından para çekilir.<br/>
 
-Veli’nin hesabına para yatırılır.
+Veli’nin hesabına para yatırılır.<br/>
 
-Eğer yatırma işlemi başarısız olursa, çekilen para geri yatırılır.
-Bu işlemler tek bir transaction gibi çalışır.
+Eğer yatırma işlemi başarısız olursa, çekilen para geri yatırılır.<br/>
+Bu işlemler tek bir transaction gibi çalışır.<br/>
 ---
 <br/>
 
@@ -1041,6 +1064,14 @@ Client → Service Layer → Unit of Work → Repositories → Database
 <img width="1103" height="403" alt="image" src="https://github.com/user-attachments/assets/1ba1d1fe-44c7-4907-9f63-70f6316af3d8" />
 <br/>
 
+<img width="1014" height="302" alt="image" src="https://github.com/user-attachments/assets/d97e128a-0ad1-4f80-b568-ab829d46b3c7" />
+
+<br/>
+<img width="465" height="368" alt="image" src="https://github.com/user-attachments/assets/929136e6-6eaf-4f08-9574-d0d2032fe60f" />
+<br/>
+
+
+
 ## 🌳 Composite Design Pattern
 <br/>
 Also known as: Object Tree
@@ -1050,7 +1081,7 @@ Also known as: Object Tree
 ---
 ## 🎯 Amaç (Intent)
 
-Composite, nesneleri ağaç yapıları halinde düzenlemenize ve bu yapılarla tekil nesneymiş gibi çalışmanıza olanak tanıyan bir structural design pattern’dir.
+Composite, nesneleri ağaç yapıları halinde düzenlemenize ve bu yapılarla tekil nesneymiş gibi çalışmanıza olanak tanıyan bir structural design pattern’dir.<br/>
 
 ---
 <br/>
@@ -1059,21 +1090,21 @@ Composite, nesneleri ağaç yapıları halinde düzenlemenize ve bu yapılarla t
 
 ## ❌ Problem
 
-Bir sipariş sisteminiz olduğunu düşünün:
+Bir sipariş sisteminiz olduğunu düşünün:<br/>
 
-a.Product → Tek bir ürün (ör. Laptop).
+a.Product → Tek bir ürün (ör. Laptop).<br/>
 
-a.Box → İçinde ürünler ve başka kutular olabilir.
+a.Box → İçinde ürünler ve başka kutular olabilir.<br/>
 
-👉 Müşteri siparişi verdiğinde, fiyatı hesaplamak için:
+👉 Müşteri siparişi verdiğinde, fiyatı hesaplamak için:<br/>
 
-a.Kutuları açıp içindekileri dolaşmak
+a.Kutuları açıp içindekileri dolaşmak<br/>
 
-a.İç içe geçmiş kutuların seviyelerini bilmek
+a.İç içe geçmiş kutuların seviyelerini bilmek<br/>
 
-a.Farklı sınıflar (Product, Box) için ayrı mantık yazmak gerekir.
+a.Farklı sınıflar (Product, Box) için ayrı mantık yazmak gerekir.<br/>
 
-Bu, kodun karmaşık ve bakımı zor hale gelmesine yol açar.
+Bu, kodun karmaşık ve bakımı zor hale gelmesine yol açar.<br/>
 <br/>
 
 
@@ -1086,14 +1117,14 @@ Bu, kodun karmaşık ve bakımı zor hale gelmesine yol açar.
 ---
 ## 💡 Çözüm 
 
-Composite, hem Product hem de Box için ortak bir arayüz (IComponent) tanımlar.
+Composite, hem Product hem de Box için ortak bir arayüz (IComponent) tanımlar.<br/>
 
-➵Product (Leaf): Fiyatını direkt döndürür.
+➵Product (Leaf): Fiyatını direkt döndürür.<br/>
 
-➵Box (Composite): İçindekileri dolaşır, fiyatlarını toplar ve kendi ek maliyetini (ör. paketleme ücreti) ekleyebilir.
+➵Box (Composite): İçindekileri dolaşır, fiyatlarını toplar ve kendi ek maliyetini (ör. paketleme ücreti) ekleyebilir.<br/>
 
-👉 Böylece müşteri için fark etmez:
-Bir ürün de olsa, bir kutu da olsa aynı arayüz ile işlem yapılır.
+👉 Böylece müşteri için fark etmez:<br/>
+Bir ürün de olsa, bir kutu da olsa aynı arayüz ile işlem yapılır.<br/>
 
 
 
@@ -1107,12 +1138,12 @@ Bir ürün de olsa, bir kutu da olsa aynı arayüz ile işlem yapılır.
 
 ##  🌍 Gerçek Dünya Örneği
 
-Askeri hiyerarşi:
+Askeri hiyerarşi:<br/>
 
-➵Ordu → Tümen → Tugay → Tabur → Takım → Asker
+➵Ordu → Tümen → Tugay → Tabur → Takım → Asker<br/>
 
-➵Emir en üstten en alta kadar aynı şekilde aktarılır.
-Her seviye, altındaki tüm yapıyı yönetir.
+➵Emir en üstten en alta kadar aynı şekilde aktarılır.<br/>
+Her seviye, altındaki tüm yapıyı yönetir.<br/>
 ---
 <br/>
 
@@ -1170,6 +1201,12 @@ Client → Component
 <br/>
 <img width="397" height="354" alt="image" src="https://github.com/user-attachments/assets/7ab61a80-3fa1-457e-b14e-e82b586be4e0" />
 <br/>
+<img width="568" height="152" alt="image" src="https://github.com/user-attachments/assets/bbc29920-4d40-4e45-b1be-24eb2deebff2" />
+<br/>
+<img width="683" height="246" alt="image" src="https://github.com/user-attachments/assets/cdedf04b-7f08-48b7-acbd-7e749e4e9c07" />
+<br/>
+<img width="419" height="467" alt="image" src="https://github.com/user-attachments/assets/cdf3485c-7480-4012-88c6-b532c0cf66ec" />
+<br/>
 
 
 ## 🌀 Iterator Design Pattern
@@ -1190,19 +1227,19 @@ Iterator, bir behavioral (davranışsal) tasarım deseni olup; bir koleksiyonun 
 
 ## ❌ Problem
 
-Koleksiyonlar yazılım geliştirmede en çok kullanılan veri yapılarındandır. Ancak:
+Koleksiyonlar yazılım geliştirmede en çok kullanılan veri yapılarındandır. Ancak:<br/>
 
-a.Her koleksiyon elemanlarını farklı şekilde tutar (liste, yığın, ağaç, grafik).
+a.Her koleksiyon elemanlarını farklı şekilde tutar (liste, yığın, ağaç, grafik).<br/>
 
-a.Koleksiyonun elemanlarına erişmek için farklı yöntemler gerekir.
+a.Koleksiyonun elemanlarına erişmek için farklı yöntemler gerekir.<br/>
 
-a.Bazen farklı gezinme algoritmaları (ör. derinlik öncelikli, genişlik öncelikli, rastgele erişim) gerekebilir.
+a.Bazen farklı gezinme algoritmaları (ör. derinlik öncelikli, genişlik öncelikli, rastgele erişim) gerekebilir.<br/>
 
-Eğer tüm bu algoritmalar koleksiyonun içine eklenirse:
+Eğer tüm bu algoritmalar koleksiyonun içine eklenirse:<br/>
 
-a.Koleksiyonun asıl amacı olan veri saklama bulanıklaşır.
+a.Koleksiyonun asıl amacı olan veri saklama bulanıklaşır.<br/>
 
-a.Farklı koleksiyonlara erişmek için client kodu belirli koleksiyon sınıflarına bağımlı hale gelir.
+a.Farklı koleksiyonlara erişmek için client kodu belirli koleksiyon sınıflarına bağımlı hale gelir.<br/>
 
 ---
 
@@ -1213,17 +1250,17 @@ a.Farklı koleksiyonlara erişmek için client kodu belirli koleksiyon sınıfla
 ---
 ## 💡 Çözüm 
 
-Iterator deseni, gezinme (traversal) davranışını koleksiyonun içinden ayırarak ayrı bir Iterator nesnesine taşır.
+Iterator deseni, gezinme (traversal) davranışını koleksiyonun içinden ayırarak ayrı bir Iterator nesnesine taşır.<br/>
 
-➵Iterator, gezinme algoritmasını kapsüller.
+➵Iterator, gezinme algoritmasını kapsüller.<br/>
 
-➵Koleksiyonun mevcut durumunu (current position, kalan eleman sayısı) kendi içinde tutar.
+➵Koleksiyonun mevcut durumunu (current position, kalan eleman sayısı) kendi içinde tutar.<br/>
 
-➵Bir koleksiyon için birden fazla iterator aynı anda bağımsız olarak çalışabilir.
+➵Bir koleksiyon için birden fazla iterator aynı anda bağımsız olarak çalışabilir.<br/>
 
-➵Tüm iterator’lar aynı arayüzü (interface) uygular → Böylece client kodu, koleksiyon tipinden bağımsız olur.
+➵Tüm iterator’lar aynı arayüzü (interface) uygular → Böylece client kodu, koleksiyon tipinden bağımsız olur.<br/>
 
-👉 Yeni bir gezinme algoritması gerektiğinde sadece yeni bir Iterator sınıfı yazılır; koleksiyon veya client değiştirilmez.
+👉 Yeni bir gezinme algoritması gerektiğinde sadece yeni bir Iterator sınıfı yazılır; koleksiyon veya client değiştirilmez.<br/>
 
 
 
@@ -1235,15 +1272,15 @@ Iterator deseni, gezinme (traversal) davranışını koleksiyonun içinden ayır
 
 ##  🌍 Gerçek Dünya Örneği
 
-Roma’da gezilecek yerler koleksiyonunu düşün:
+Roma’da gezilecek yerler koleksiyonunu düşün:<br/>
 
-b.Kendi başına gezinmek → kontrolsüz ve zaman kaybettirir.
+b.Kendi başına gezinmek → kontrolsüz ve zaman kaybettirir.<br/>
 
-b.Telefon navigasyonu → ucuz ve pratik bir iterator.
+b.Telefon navigasyonu → ucuz ve pratik bir iterator.<br/>
 
-b.Yerel rehber → daha pahalı ama özel, kişiselleştirilmiş bir iterator.
+b.Yerel rehber → daha pahalı ama özel, kişiselleştirilmiş bir iterator.<br/>
 
-Her biri aynı koleksiyonu (Roma’daki tarihi yerler) farklı şekilde gezme algoritmasıyla temsil eder.
+Her biri aynı koleksiyonu (Roma’daki tarihi yerler) farklı şekilde gezme algoritmasıyla temsil eder.<br/>
 ---
 <br/>
 
@@ -1252,15 +1289,15 @@ Her biri aynı koleksiyonu (Roma’daki tarihi yerler) farklı şekilde gezme al
 ##  🏗 Yapı (Structure)
 
 
-1.Iterator (Arayüz) → Gezinti için gerekli metotları tanımlar (Next(), HasNext() vb.).
+1.Iterator (Arayüz) → Gezinti için gerekli metotları tanımlar (Next(), HasNext() vb.).<br/>
 
-2.ConcreteIterator → Belirli bir gezinme algoritmasını uygular, mevcut pozisyonu takip eder.
+2.ConcreteIterator → Belirli bir gezinme algoritmasını uygular, mevcut pozisyonu takip eder.<br/>
 
-3.Collection (Arayüz) → Uyumlu iterator döndüren metotları tanımlar.
+3.Collection (Arayüz) → Uyumlu iterator döndüren metotları tanımlar.<br/>
 
-4.ConcreteCollection → Belirli bir ConcreteIterator döndürür.
+4.ConcreteCollection → Belirli bir ConcreteIterator döndürür.<br/>
 
-5.Client → Koleksiyon ve iterator ile sadece arayüzler üzerinden çalışır.
+5.Client → Koleksiyon ve iterator ile sadece arayüzler üzerinden çalışır.<br/>
 
 🖥️ Pseudocode
 
@@ -1356,6 +1393,10 @@ class Program
 <br/>
 <img width="1002" height="453" alt="image" src="https://github.com/user-attachments/assets/b0736139-f4da-4498-9c10-b5bc1790c3f4" />
 <br/>
+<img width="966" height="252" alt="image" src="https://github.com/user-attachments/assets/3079ae4d-57cf-4df3-a30a-d8997c4e2a28" />
+<br/>
+
+
 
 ## 🏛️ Facade Design Pattern
 <br/>
@@ -1374,19 +1415,19 @@ Facade, bir structural (yapısal) tasarım deseni olup; karmaşık bir sistemin 
 
 ## ❌ Problem
 
-Bir uygulamanın karmaşık bir kütüphane veya framework ile çalışması gerektiğini düşünelim.
+Bir uygulamanın karmaşık bir kütüphane veya framework ile çalışması gerektiğini düşünelim.<br/>
 
-a.Birçok nesnenin doğru sırada başlatılması,
+a.Birçok nesnenin doğru sırada başlatılması,<br/>
 
-a.Bağımlılıkların takip edilmesi,
+a.Bağımlılıkların takip edilmesi,<br/>
 
-a.Metotların uygun sırayla çağrılması gerekir.
+a.Metotların uygun sırayla çağrılması gerekir.<br/>
 
-Bu durumda:
+Bu durumda:<br/>
 
-b.İş mantığı, üçüncü parti sınıfların uygulama detaylarına sıkı sıkıya bağımlı hale gelir.
+b.İş mantığı, üçüncü parti sınıfların uygulama detaylarına sıkı sıkıya bağımlı hale gelir.<br/>
 
-b.Kod zor anlaşılır ve bakımı zor olur.
+b.Kod zor anlaşılır ve bakımı zor olur.<br/>
 
 ---
 
@@ -1397,17 +1438,17 @@ b.Kod zor anlaşılır ve bakımı zor olur.
 ---
 ## 💡 Çözüm 
 
-Facade deseni, bu karmaşık sistemi saran basit bir ara yüz sınıfı sağlar.
+Facade deseni, bu karmaşık sistemi saran basit bir ara yüz sınıfı sağlar.<br/>
 
-Facade, alt sistemin karmaşıklığını gizler.
+Facade, alt sistemin karmaşıklığını gizler.<br/>
 
-Kullanıcıya yalnızca gerekli olan metotları sunar.
+Kullanıcıya yalnızca gerekli olan metotları sunar.<br/>
 
-Gereksiz detayları dışarı sızdırmaz.
+Gereksiz detayları dışarı sızdırmaz.<br/>
 
-Örneğin:
-Bir uygulama profesyonel bir video dönüştürme kütüphanesi kullanıyor olabilir.
-Ama uygulamanın ihtiyacı yalnızca:
+Örneğin:<br/>
+Bir uygulama profesyonel bir video dönüştürme kütüphanesi kullanıyor olabilir.<br/>
+Ama uygulamanın ihtiyacı yalnızca:<br/>
 
 ```bash
 videoFacade.Encode("cat.mp4", "mp4");
@@ -1423,13 +1464,13 @@ videoFacade.Encode("cat.mp4", "mp4");
 
 ##  🌍 Gerçek Dünya Örneği
 
-Telefonla sipariş verdiğinizi düşünün:
+Telefonla sipariş verdiğinizi düşünün:<br/>
 
-a.Operatör, sizin için Facade görevi görür.
+a.Operatör, sizin için Facade görevi görür.<br/>
 
-a.Sipariş sistemine, ödeme altyapısına ve kargoya erişim sağlar.
+a.Sipariş sistemine, ödeme altyapısına ve kargoya erişim sağlar.<br/>
 
-a.Siz yalnızca bir numara arayıp sipariş verirsiniz → karmaşık süreçleri bilmenize gerek yoktur.
+a.Siz yalnızca bir numara arayıp sipariş verirsiniz → karmaşık süreçleri bilmenize gerek yoktur.<br/>
 ---
 <br/>
 
@@ -1530,6 +1571,17 @@ class Program
 <br/>
 <img width="1049" height="446" alt="image" src="https://github.com/user-attachments/assets/849b8699-6fdd-477c-a79c-3f33512c0e07" />
 <br/>
+<img width="1031" height="335" alt="image" src="https://github.com/user-attachments/assets/a3769306-0d14-41d5-b755-a0b927c54eb8" />
+<br/>
+<img width="715" height="170" alt="image" src="https://github.com/user-attachments/assets/7870e13b-0dbf-441e-80f8-5872bdaa3eaa" />
+<br/>
+<img width="484" height="116" alt="image" src="https://github.com/user-attachments/assets/ef424d3e-d6f7-4be8-84a1-d2204983a27b" />
+<br/>
+<img width="1024" height="395" alt="image" src="https://github.com/user-attachments/assets/fdb16a39-ac81-4ae0-a529-1465173406eb" />
+<br/>
+<img width="728" height="168" alt="image" src="https://github.com/user-attachments/assets/28a0209f-9261-4b55-b68d-f9cc9c14fe5a" />
+<br/>
+
 
 ## 🎭 Decorator Design Pattern
 <br/>
@@ -1540,7 +1592,7 @@ class Program
 ---
 ## 🎯 Amaç (Intent)
 
-Decorator, bir structural (yapısal) tasarım deseni olup, nesnelere yeni davranışlar eklemenin bir yolunu sunar.
+Decorator, bir structural (yapısal) tasarım deseni olup, nesnelere yeni davranışlar eklemenin bir yolunu sunar.<br/>
 Bunu, nesneleri aynı arayüzü uygulayan özel “sarmalayıcı” (wrapper) nesneler içine alarak yapar.
 
 ---
@@ -1550,23 +1602,23 @@ Bunu, nesneleri aynı arayüzü uygulayan özel “sarmalayıcı” (wrapper) ne
 
 ## ❌ Problem
 
-Bir bildirim (notification) kütüphanesi geliştirdiğinizi düşünün.
-Başta sadece e-posta bildirimi gönderen Notifier sınıfınız var.
+Bir bildirim (notification) kütüphanesi geliştirdiğinizi düşünün.<br/>
+Başta sadece e-posta bildirimi gönderen Notifier sınıfınız var.<br/>
 
-Daha sonra:
+Daha sonra:<br/>
 
-a.Kullanıcılar SMS bildirimi istiyor.
+a.Kullanıcılar SMS bildirimi istiyor.<br/>
 
-a.Bazıları Facebook bildirimi istiyor.
+a.Bazıları Facebook bildirimi istiyor.<br/>
 
-a.Kurumsal kullanıcılar ise Slack bildirimi talep ediyor.
+a.Kurumsal kullanıcılar ise Slack bildirimi talep ediyor.<br/>
 
-👉 İlk çözüm: Notifier sınıfını miras alıp her biri için alt sınıflar (subclass) oluşturmak.
-Ama sorun şu:
+👉 İlk çözüm: Notifier sınıfını miras alıp her biri için alt sınıflar (subclass) oluşturmak.<br/>
+Ama sorun şu:<br/>
 
-b.Birden fazla bildirim türü aynı anda kullanılamıyor.
+b.Birden fazla bildirim türü aynı anda kullanılamıyor.<br/>
 
-b.Tüm kombinasyonları oluşturmak için çok fazla alt sınıf gerekir (sınıf patlaması / combinatorial explosion).
+b.Tüm kombinasyonları oluşturmak için çok fazla alt sınıf gerekir (sınıf patlaması / combinatorial explosion).<br/>
 
 ---
 
@@ -1577,21 +1629,21 @@ b.Tüm kombinasyonları oluşturmak için çok fazla alt sınıf gerekir (sını
 ---
 ## 💡 Çözüm 
 
-Decorator deseni ile:
+Decorator deseni ile:<br/>
 
-a.Her bildirim türü için bir decorator sınıfı oluşturulur.
+a.Her bildirim türü için bir decorator sınıfı oluşturulur.<br/>
 
-a.Tüm sınıflar aynı INotifier arayüzünü uygular.
+a.Tüm sınıflar aynı INotifier arayüzünü uygular.<br/>
 
-a.Bir Notifier nesnesi, birden fazla decorator ile sarılabilir.
+a.Bir Notifier nesnesi, birden fazla decorator ile sarılabilir.<br/>
 
-🔑 Özet:
+## 🔑 Özet:
 
-b.EmailNotifier → Temel bildirim.
+b.EmailNotifier → Temel bildirim.<br/>
 
-b.SMSDecorator, SlackDecorator, FacebookDecorator → Ek özellikleri dinamik olarak ekler.
+b.SMSDecorator, SlackDecorator, FacebookDecorator → Ek özellikleri dinamik olarak ekler.<br/>
 
-b.Decorator’lar birbirine zincirleme eklenebilir (stack).
+b.Decorator’lar birbirine zincirleme eklenebilir (stack).<br/>
 
 ---
 
@@ -1601,17 +1653,17 @@ b.Decorator’lar birbirine zincirleme eklenebilir (stack).
 
 ##  🌍 Gerçek Dünya Örneği
 
-Kıyafet giymek 🎽🧥🌧️:
+Kıyafet giymek 🎽🧥🌧️:<br/>
 
-a.Önce tişört giyersiniz (temel nesne).
+a.Önce tişört giyersiniz (temel nesne).<br/>
 
-a.Üşüyünce kazak giyersiniz (decorator).
+a.Üşüyünce kazak giyersiniz (decorator).<br/>
 
-a.Daha çok üşüyünce mont eklersiniz (decorator).
+a.Daha çok üşüyünce mont eklersiniz (decorator).<br/>
 
-a.Yağmur yağarsa yağmurluk giyersiniz (decorator).
+a.Yağmur yağarsa yağmurluk giyersiniz (decorator).<br/>
 
-👉 İhtiyaca göre katmanlı bir şekilde özellik eklenir, ve istenildiğinde kolayca çıkarılabilir.
+👉 İhtiyaca göre katmanlı bir şekilde özellik eklenir, ve istenildiğinde kolayca çıkarılabilir.<br/>
 ---
 <br/>
 
@@ -1746,9 +1798,22 @@ Slack message sent: 🚨 Fire in the server room!
 <br/>
 <img width="1111" height="78" alt="image" src="https://github.com/user-attachments/assets/0c00bb64-5400-4ae7-a4ed-f3266c097767" />
 <br/>
-
-
-
+<img width="1024" height="424" alt="image" src="https://github.com/user-attachments/assets/b4169038-bb24-46d7-b929-4029b1242284" />
+<br/>
+<img width="670" height="201" alt="image" src="https://github.com/user-attachments/assets/dd6ec8bd-d7e3-4fea-828a-686e58bcd751" />
+<br/>
+<img width="1041" height="449" alt="image" src="https://github.com/user-attachments/assets/d0a1a756-1020-42e1-acc1-2906f7ccab97" />
+<br/>
+<img width="628" height="191" alt="image" src="https://github.com/user-attachments/assets/ebbbf9d7-97c0-458b-912a-557554c2f2de" />
+<br/>
+<img width="1035" height="471" alt="image" src="https://github.com/user-attachments/assets/8afce0b1-09ab-48a5-ba09-272d2fe91971" />
+<br/>
+<img width="626" height="197" alt="image" src="https://github.com/user-attachments/assets/3193fe6c-8796-4f26-a1be-464f987be68e" />
+<br/>
+<img width="1046" height="455" alt="image" src="https://github.com/user-attachments/assets/84a6f1ea-cfec-4511-a3ae-ee9ead8d6a3f" />
+<br/>
+<img width="686" height="195" alt="image" src="https://github.com/user-attachments/assets/ef443021-d6ef-4043-9236-f9ecadd5a464" />
+<br/>
 
 ---
 
