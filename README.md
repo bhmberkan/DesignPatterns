@@ -173,7 +173,9 @@ Zinciri oluşturur ve isteği ilk işleyiciye gönderir.
 <img width="1027" height="239" alt="image" src="https://github.com/user-attachments/assets/0a30d138-b0dc-4d07-827b-7b71af866f61" />
 <br/>
 <img width="1070" height="179" alt="image" src="https://github.com/user-attachments/assets/353da8ce-c319-45d2-b17d-265c6c3d7143" />
-
+<br/>
+<img width="366" height="383" alt="image" src="https://github.com/user-attachments/assets/a94cd04f-9843-41b3-8bfd-3d23e93ea763" />
+<br/>
 
 
 
@@ -298,6 +300,7 @@ Command ve Query için farklı olabilir (ör. Command için yazma odaklı verita
 <br/>
 <img width="1004" height="390" alt="image" src="https://github.com/user-attachments/assets/f24b679d-fe82-4258-bc6c-0d730bfa9e5c" />
 <br/>
+<img width="383" height="621" alt="image" src="https://github.com/user-attachments/assets/cd3db422-0ae8-48a7-ab21-6c80ba78763e" />
 
 <br/>
 
@@ -431,7 +434,8 @@ ComponentA ---> Mediator <--- ComponentB
 <br/>
 <img width="997" height="411" alt="image" src="https://github.com/user-attachments/assets/cae6ead1-83f7-4d89-a110-dc45165aabe9" />
 <br/>
-
+<img width="370" height="626" alt="image" src="https://github.com/user-attachments/assets/7c017f29-7e95-4d8e-b0b5-51edacf2f9fe" />
+<br/>
 
 ## 🌸 Template Method Tasarım Deseni
 <br/>
@@ -581,6 +585,8 @@ ConcreteClassB
 <img width="1086" height="413" alt="image" src="https://github.com/user-attachments/assets/dd2e2bb2-3050-4865-bc3e-e3ba83ec7079" />
 <br/>
 <img width="581" height="224" alt="image" src="https://github.com/user-attachments/assets/fe47b693-50d5-4d3e-8b74-4a584f3484a6" />
+<br/>
+<img width="368" height="320" alt="image" src="https://github.com/user-attachments/assets/ccf32212-c65d-4c0a-bcf6-9dc1ed3e665d" />
 <br/>
 
 ## 🌺 Observer Tasarım Deseni
@@ -733,7 +739,8 @@ ConcreteSubscriberB
 <br/>
 <img width="690" height="430" alt="image" src="https://github.com/user-attachments/assets/c3461662-6815-4da3-90b5-c7e61c6eeaa3" />
 <br/>
-
+<img width="378" height="379" alt="image" src="https://github.com/user-attachments/assets/32a21114-a07c-4bdf-9381-8fb0c7d8db8b" />
+<br/>
 
 
 ## 🌻 Repository Design Pattern
@@ -1069,7 +1076,8 @@ Client → Service Layer → Unit of Work → Repositories → Database
 <br/>
 <img width="465" height="368" alt="image" src="https://github.com/user-attachments/assets/929136e6-6eaf-4f08-9574-d0d2032fe60f" />
 <br/>
-
+<img width="432" height="610" alt="image" src="https://github.com/user-attachments/assets/df4f5555-6bd2-4914-a12f-1fecea6759ff" />
+<br/>
 
 
 ## 🌳 Composite Design Pattern
@@ -1207,7 +1215,8 @@ Client → Component
 <br/>
 <img width="419" height="467" alt="image" src="https://github.com/user-attachments/assets/cdf3485c-7480-4012-88c6-b532c0cf66ec" />
 <br/>
-
+<img width="337" height="323" alt="image" src="https://github.com/user-attachments/assets/2eab5248-45b6-4a5c-8673-7dca0912ae31" />
+<br/>
 
 ## 🌀 Iterator Design Pattern
 <br/>
@@ -1395,7 +1404,8 @@ class Program
 <br/>
 <img width="966" height="252" alt="image" src="https://github.com/user-attachments/assets/3079ae4d-57cf-4df3-a30a-d8997c4e2a28" />
 <br/>
-
+<img width="364" height="326" alt="image" src="https://github.com/user-attachments/assets/69e4cadc-0278-4a8f-97bc-af3a586c5bf5" />
+<br/>
 
 
 ## 🏛️ Facade Design Pattern
@@ -1581,7 +1591,8 @@ class Program
 <br/>
 <img width="728" height="168" alt="image" src="https://github.com/user-attachments/assets/28a0209f-9261-4b55-b68d-f9cc9c14fe5a" />
 <br/>
-
+<img width="313" height="298" alt="image" src="https://github.com/user-attachments/assets/84449c1b-fcb5-40f7-862e-9cf000097311" />
+<br/>
 
 ## 🎭 Decorator Design Pattern
 <br/>
@@ -1813,6 +1824,8 @@ Slack message sent: 🚨 Fire in the server room!
 <img width="1046" height="455" alt="image" src="https://github.com/user-attachments/assets/84a6f1ea-cfec-4511-a3ae-ee9ead8d6a3f" />
 <br/>
 <img width="686" height="195" alt="image" src="https://github.com/user-attachments/assets/ef443021-d6ef-4043-9236-f9ecadd5a464" />
+<br/>
+<img width="347" height="420" alt="image" src="https://github.com/user-attachments/assets/256b96a6-db8a-4e16-b352-fe994dc7ea30" />
 <br/>
 
 ---
